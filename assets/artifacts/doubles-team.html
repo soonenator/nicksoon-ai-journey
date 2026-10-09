@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Favorite-First Pokémon Champions Doubles Team</title>
+<style>
+:root{
+  --bg:#0d1220; --panel:#151c2f; --panel2:#1c2540; --text:#f6f8ff; --muted:#aeb8d3;
+  --accent:#f6c945; --good:#66d9a3; --warn:#ffb86b; --bad:#ff7a90; --line:#2b3658;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#0a0f1b,#121a2d);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:980px;margin:auto;padding:18px}
+.hero{background:linear-gradient(135deg,#202b4a,#131b30);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 12px 32px #0005}
+h1{font-size:28px;line-height:1.05;margin:0 0 8px}
+.sub{color:var(--muted);margin:0}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.badge{padding:7px 10px;border-radius:999px;background:#10172a;border:1px solid var(--line);font-size:12px;font-weight:700}
+.tabs{display:flex;gap:8px;overflow:auto;padding:14px 0 10px;position:sticky;top:0;background:linear-gradient(180deg,#0d1220 75%,transparent);z-index:3}
+.tab{border:1px solid var(--line);background:#141c31;color:var(--text);border-radius:12px;padding:10px 14px;font-weight:800;white-space:nowrap;cursor:pointer}
+.tab.active{background:var(--accent);color:#151515;border-color:transparent}
+.panel{display:none}.panel.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:15px}
+.card.favorite{box-shadow:inset 4px 0 0 var(--accent)}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.name{font-size:20px;font-weight:900}
+.role{color:var(--muted);font-size:12px}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.pill{font-size:11px;padding:4px 7px;border-radius:8px;background:var(--panel2);border:1px solid var(--line)}
+.fav{background:#403617;border-color:#76631e;color:#ffe57e}
+.item{background:#20344d}
+.moves{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:10px 0}
+.move{background:#10172a;border-radius:9px;padding:7px 8px;font-size:12px;border:1px solid #263150}
+.note{font-size:12px;color:var(--muted)}
+details{margin-top:10px;border-top:1px solid var(--line);padding-top:9px}
+summary{cursor:pointer;font-weight:800}
+.pick{margin-top:10px;width:100%;padding:9px;border-radius:10px;border:1px solid var(--line);background:#111a2e;color:var(--text);font-weight:800;cursor:pointer}
+.pick.selected{background:var(--good);color:#07150f;border-color:transparent}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}
+.lead{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.lead:last-child{border-bottom:0}
+.tag{font-size:11px;font-weight:900;padding:5px 8px;border-radius:8px}
+.good{background:#163a2d;color:#8af1c1}.mid{background:#433817;color:#ffe27a}.danger{background:#45222b;color:#ffadbd}
+.swap{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.swap:last-child{border:0}
+.arrow{color:var(--accent);font-weight:900}
+.small{font-size:12px;color:var(--muted)}
+#selection{position:sticky;bottom:10px;background:#0c1425eF;border:1px solid var(--line);backdrop-filter:blur(12px);padding:12px;border-radius:16px;margin-top:12px}
+#selection strong{color:var(--accent)}
+button.action{border:0;background:var(--accent);color:#141414;border-radius:10px;padding:9px 11px;font-weight:900;cursor:pointer;margin:6px 6px 0 0}
+button.secondary{background:#263252;color:var(--text)}
+pre{white-space:pre-wrap;background:#0b1120;border:1px solid var(--line);padding:12px;border-radius:12px;font-size:12px}
+a{color:#9cc2ff}
+@media(max-width:520px){
+  .wrap{padding:12px}.hero{padding:16px}h1{font-size:24px}.moves{grid-template-columns:1fr}.swap{grid-template-columns:1fr}.arrow{transform:rotate(90deg);justify-self:center}
+}
+</style>
+</head>
+<body><aside style="font:13px/1.5 system-ui,sans-serif;background:#fff4cf;color:#3b3321;padding:12px 16px;border-bottom:1px solid #d6c584;position:relative;z-index:20"><strong>Archived artifact · September 1, 2026</strong><br>Historical game-strategy prototype. The original ruleset has expired; this is an archival UI example, not current strategy advice.</aside>
+<div class="wrap">
+  <section class="hero">
+    <h1>Favorite‑First Doubles Team</h1>
+    <p class="sub">Pokémon Champions · Regulation M‑B · built around your favorites without giving up a real competitive game plan.</p>
+    <div class="badges">
+      <span class="badge">⭐ 3 favorites in the main six</span>
+      <span class="badge">💧 Mega Blastoise centerpiece</span>
+      <span class="badge">⚡ Lightning Rod support</span>
+      <span class="badge">🌀 Fast + Trick Room modes</span>
+    </div>
+  </section>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="team">Team</button>
+    <button class="tab" data-tab="leads">Leads & Bring 4</button>
+    <button class="tab" data-tab="swaps">Favorite Swaps</button>
+    <button class="tab" data-tab="why">Why This Works</button>
+  </nav>
+
+  <section id="team" class="panel active">
+    <div class="box">
+      <b>My recommendation:</b> start here. Mega Blastoise is your primary win condition; Raichu creates safe setup turns and redirects Electric attacks; Sinistcha heals/redirection-supports Blastoise; Kingambit is your physical cleaner; Farigiraf + Snorlax gives you a slower mode when speed control gets ugly.
+    </div>
+    <div class="grid" id="cards"></div>
+    <div id="selection">Selected for battle: <strong id="count">0 / 4</strong> · <span id="chosen">Tap “Bring this Pokémon” on four cards.</span><br/>
+      <button class="action" onclick="preset('blast')">Preset: Blastoise mode</button>
+      <button class="action secondary" onclick="preset('tr')">Preset: Trick Room</button>
+      <button class="action secondary" onclick="clearPicks()">Clear</button>
+    </div>
+  </section>
+
+  <section id="leads" class="panel">
+    <div class="box">
+      <h2 style="margin-top:0">Easy lead guide</h2>
+      <div class="lead"><div><b>Raichu + Mega Blastoise</b><div class="small">Default. Fake Out buys Shell Smash; Lightning Rod discourages Electric targeting.</div></div><span class="tag good">DEFAULT</span></div>
+      <div class="lead"><div><b>Sinistcha + Mega Blastoise</b><div class="small">Use into teams that can pressure Raichu. Rage Powder can buy setup; Hospitality restores Water Spout power after a switch.</div></div><span class="tag good">SAFE SETUP</span></div>
+      <div class="lead"><div><b>Farigiraf + Snorlax</b><div class="small">Use when their team is very fast or vulnerable to Trick Room. Armor Tail also shuts down opposing priority.</div></div><span class="tag mid">SLOW MODE</span></div>
+      <div class="lead"><div><b>Raichu + Kingambit</b><div class="small">Good when you don't need Shell Smash immediately. Fake Out + strong Dark pressure can punish passive leads.</div></div><span class="tag mid">PRESSURE</span></div>
+    </div>
+    <div class="box">
+      <h2 style="margin-top:0">Typical Bring 4</h2>
+      <p><b>Most games:</b> Blastoise / Raichu / Sinistcha / Kingambit.</p>
+      <p><b>Into hyper offense:</b> Blastoise / Raichu / Farigiraf / Kingambit.</p>
+      <p><b>Into speed-heavy or Trick Room teams:</b> Farigiraf / Snorlax / Kingambit / Sinistcha.</p>
+      <p class="small">You do not need to bring Snorlax every game. Think of it as your “change the speed axis” button.</p>
+    </div>
+  </section>
+
+  <section id="swaps" class="panel">
+    <div class="box">
+      <h2 style="margin-top:0">Want even more favorites?</h2>
+      <div class="swap"><div><b>Kingambit</b><div class="small">Best overall physical closer</div></div><div class="arrow">→</div><div><b>Heracross</b><div class="small">More personal, less consistent. Try Choice Scarf + Moxie with Close Combat / Megahorn / Rock Slide / Knock Off. Avoid Mega Heracross here because it competes with Mega Blastoise for your one Mega.</div></div></div>
+      <div class="swap"><div><b>Farigiraf</b><div class="small">Reliable Trick Room + priority denial</div></div><div class="arrow">→</div><div><b>Decidueye</b><div class="small">Playable, but you lose your clean speed-control mode. Best as a physical utility attacker: Spirit Shackle / Leaf Blade / Tailwind / Protect.</div></div></div>
+      <div class="swap"><div><b>Raichu</b><div class="small">Best Blastoise partner</div></div><div class="arrow">→</div><div><b>Pikachu</b><div class="small">Use only if you really want Pikachu. Light Ball gives damage, but Raichu's Speed + bulk + support profile is much easier to win with.</div></div></div>
+      <div class="swap"><div><b>Future slot</b></div><div class="arrow">→</div><div><b>Porygon2 / Porygon-Z</b><div class="small">The Porygon line is not in the current M‑B eligible roster. If it becomes legal in a later regulation, Porygon2 is the form I'd test first because bulky Trick Room support fits this team naturally.</div></div></div>
+    </div>
+  </section>
+
+  <section id="why" class="panel">
+    <div class="box">
+      <h2 style="margin-top:0">Why I didn't just use all six favorites</h2>
+      <p><b>Blastoise:</b> absolutely worth building around. Mega Blastoise has a real tournament shell-smash niche, and Water Spout + Dark Pulse is the standard offensive core.</p>
+      <p><b>Raichu:</b> a strong doubles support choice even without Mega Evolving. Lightning Rod is especially valuable beside Blastoise.</p>
+      <p><b>Snorlax:</b> viable as a bulky slow-mode piece, but it needs Trick Room support to feel threatening rather than passive.</p>
+      <p><b>Heracross:</b> dangerous, but the 4× Flying weakness is a real liability and Mega Heracross would take the Mega slot away from Blastoise.</p>
+      <p><b>Decidueye:</b> usable but fringe in M‑B. It brings nice Grass/Ghost coverage, yet doesn't solve as many team problems as Farigiraf/Sinistcha.</p>
+      <p><b>Pikachu:</b> Light Ball is fun, but Raichu gives you a cleaner support profile.</p>
+    </div>
+    <div class="box">
+      <h3 style="margin-top:0">Current-format note</h3>
+      <p>Regulation M‑B is currently scheduled through <b>September 9, 2026</b>. M‑C starts that day and its full eligible roster has not yet been announced, so I would re-check the team when M‑C lands.</p>
+    </div>
+    <div class="box">
+      <h3 style="margin-top:0">Sources used</h3>
+      <div class="small">
+        Pokémon Champions official regulation and strategy pages; Pokémon Zone Season 5 / Mega Blastoise / Sinistcha / Kingambit data; poch.ms current doubles usage and move data for Raichu and Snorlax.
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+const team = [
+ {id:'blast',name:'Mega Blastoise',fav:true,role:'Primary sweeper',type:'Water',item:'Blastoisinite',ability:'Torrent → Mega Launcher',nature:'Modest',sp:'2 HP / 32 SpA / 32 Spe',
+  moves:['Water Spout','Dark Pulse','Shell Smash','Protect'],note:'Your main win condition. Preserve HP for Water Spout; use Fake Out or Rage Powder to create a Shell Smash turn.'},
+ {id:'raichu',name:'Raichu',fav:true,role:'Fast support',type:'Electric',item:'Focus Sash',ability:'Lightning Rod',nature:'Timid',sp:'2 HP / 32 SpA / 32 Spe',
+  moves:['Fake Out','Encore','Nuzzle','Volt Switch'],note:'Protects Blastoise from Electric moves and creates setup windows. If you want a safer beginner set, use Protect over Nuzzle.'},
+ {id:'snorlax',name:'Snorlax',fav:true,role:'Bulky slow-mode wincon',type:'Normal',item:'Leftovers',ability:'Thick Fat',nature:'Relaxed',sp:'32 HP / 32 Def / 2 SpD',
+  moves:['Double-Edge','High Horsepower','Yawn','Protect'],note:'Bring it when Trick Room is good. I prefer consistent damage over the more ladder-common Fissure option.'},
+ {id:'sinistcha',name:'Sinistcha',fav:false,role:'Redirection + healing',type:'Grass / Ghost',item:'Kasib Berry',ability:'Hospitality',nature:'Bold',sp:'32 HP / 32 Def / 2 SpD',
+  moves:['Matcha Gotcha','Rage Powder','Trick Room','Protect'],note:'Fantastic with Blastoise: Rage Powder buys turns, and Hospitality restores 25% HP on switch-in.'},
+ {id:'farigiraf',name:'Farigiraf',fav:false,role:'Trick Room + priority control',type:'Normal / Psychic',item:'Colbur Berry',ability:'Armor Tail',nature:'Relaxed',sp:'32 HP / 20 Def / 14 SpD',
+  moves:['Trick Room','Helping Hand','Psychic','Protect'],note:'Enables Snorlax and blocks opposing priority. It can also reverse an enemy Trick Room.'},
+ {id:'king',name:'Kingambit',fav:false,role:'Physical closer',type:'Dark / Steel',item:'Black Glasses',ability:'Defiant',nature:'Adamant',sp:'32 HP / 32 Atk / 2 SpD',
+  moves:['Kowtow Cleave','Sucker Punch','Iron Head','Protect'],note:'Gives the team much-needed physical pressure, Fairy resistance, and priority cleaning.'},
+];
+
+let selected = new Set();
+function renderCards(){
+  const root=document.getElementById('cards');
+  root.innerHTML=team.map(p=>`
+    <article class="card ${p.fav?'favorite':''}">
+      <div class="top">
+        <div><div class="name">${p.name}</div><div class="role">${p.role}</div></div>
+        ${p.fav?'<span class="pill fav">★ FAVORITE</span>':''}
+      </div>
+      <div class="pills"><span class="pill">${p.type}</span><span class="pill item">${p.item}</span></div>
+      <div class="moves">${p.moves.map(m=>`<div class="move">${m}</div>`).join('')}</div>
+      <details><summary>Build details</summary>
+        <p class="note"><b>Ability:</b> ${p.ability}<br><b>Stat Alignment:</b> ${p.nature}<br><b>Stat Points:</b> ${p.sp}</p>
+        <p class="note">${p.note}</p>
+      </details>
+      <button class="pick" id="pick-${p.id}" onclick="togglePick('${p.id}')">Bring this Pokémon</button>
+    </article>`).join('');
+}
+function togglePick(id){
+  if(selected.has(id)) selected.delete(id);
+  else if(selected.size<4) selected.add(id);
+  updatePicks();
+}
+function updatePicks(){
+  team.forEach(p=>{
+    const b=document.getElementById('pick-'+p.id);
+    if(!b)return;
+    const on=selected.has(p.id); b.classList.toggle('selected',on); b.textContent=on?'✓ Selected':'Bring this Pokémon';
+  });
+  document.getElementById('count').textContent=`${selected.size} / 4`;
+  document.getElementById('chosen').textContent=selected.size?team.filter(p=>selected.has(p.id)).map(p=>p.name).join(' · '):'Tap “Bring this Pokémon” on four cards.';
+}
+function preset(kind){
+ selected.clear();
+ (kind==='blast'?['blast','raichu','sinistcha','king']:['farigiraf','snorlax','sinistcha','king']).forEach(x=>selected.add(x));
+ updatePicks();
+}
+function clearPicks(){selected.clear();updatePicks();}
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+ btn.classList.add('active'); document.getElementById(btn.dataset.tab).classList.add('active');
+}));
+renderCards(); updatePicks();
+</script>
+</body>
+</html>

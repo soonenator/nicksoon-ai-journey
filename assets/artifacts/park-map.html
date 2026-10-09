@@ -1,0 +1,338 @@
+<!doctype html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Disneyland Schematic Visitor Map</title><style>:root{--foreground:#21394d;--background:#fffdf8;--muted-foreground:#61727b;--border:#cfdbdd;--primary:#19577b;--primary-foreground:#fff;--viz-series-1:#9871e4;--viz-series-2:#45a4d2;--viz-series-3:#75b85d;--viz-series-4:#e4944d;--viz-series-5:#d96493}body{margin:0;padding:18px;background:var(--background);font:15px/1.4 system-ui,sans-serif}#disneyland-map-2026{max-width:920px;margin:auto}.viz-row{display:flex;gap:12px}.viz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}.text-small{font-size:13px}.text-muted{color:var(--muted-foreground)}</style></head><body><aside style="font:13px/1.5 system-ui,sans-serif;background:#fff4cf;color:#3b3321;padding:12px 16px;border-bottom:1px solid #d6c584;position:relative;z-index:20"><strong>Archived artifact · July 29, 2026</strong><br>Original schematic map with a standalone color and type wrapper to replace its original host styling. Historical layout, not to scale or current navigation advice.</aside><div id="disneyland-map-2026">
+  <style>
+    #disneyland-map-2026 {
+      color: var(--foreground);
+    }
+
+    #disneyland-map-2026 .map-meta {
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    #disneyland-map-2026 .map-wrap {
+      position: relative;
+      width: 100%;
+      height: clamp(650px, 100vw, 820px);
+      overflow: hidden;
+    }
+
+    #disneyland-map-2026 .park-svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    #disneyland-map-2026 .zone {
+      stroke: var(--border);
+      stroke-width: 3;
+      vector-effect: non-scaling-stroke;
+    }
+
+    #disneyland-map-2026 .zone-west {
+      fill: var(--viz-series-3);
+      fill-opacity: 0.13;
+    }
+
+    #disneyland-map-2026 .zone-center {
+      fill: var(--viz-series-1);
+      fill-opacity: 0.11;
+    }
+
+    #disneyland-map-2026 .zone-east {
+      fill: var(--viz-series-5);
+      fill-opacity: 0.12;
+    }
+
+    #disneyland-map-2026 .water {
+      fill: var(--viz-series-2);
+      fill-opacity: 0.22;
+      stroke: var(--viz-series-2);
+      stroke-width: 2;
+      vector-effect: non-scaling-stroke;
+    }
+
+    #disneyland-map-2026 .walkway {
+      fill: none;
+      stroke: var(--muted-foreground);
+      stroke-opacity: 0.4;
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    #disneyland-map-2026 .rail {
+      fill: none;
+      stroke: var(--foreground);
+      stroke-opacity: 0.35;
+      stroke-width: 3;
+      stroke-dasharray: 7 5;
+      vector-effect: non-scaling-stroke;
+    }
+
+    #disneyland-map-2026 .monorail {
+      fill: none;
+      stroke: var(--viz-series-4);
+      stroke-width: 4;
+      stroke-linecap: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    #disneyland-map-2026 .castle-mark,
+    #disneyland-map-2026 .entrance-mark {
+      fill: var(--primary);
+      stroke: var(--background);
+      stroke-width: 3;
+      vector-effect: non-scaling-stroke;
+    }
+
+    #disneyland-map-2026 .land-label {
+      position: absolute;
+      z-index: 3;
+      transform: translate(-50%, -50%);
+      max-width: 26%;
+      color: var(--foreground);
+      font-weight: 500;
+      text-align: center;
+      text-wrap: balance;
+      pointer-events: none;
+    }
+
+    #disneyland-map-2026 .marker {
+      position: absolute;
+      z-index: 4;
+      display: grid;
+      width: 25px;
+      height: 25px;
+      place-items: center;
+      transform: translate(-50%, -50%);
+      border: 2px solid var(--background);
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--primary-foreground);
+      box-shadow: 0 0 0 1px var(--border);
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    #disneyland-map-2026 .service {
+      position: absolute;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transform: translate(-50%, -50%);
+      color: var(--foreground);
+      white-space: nowrap;
+    }
+
+    #disneyland-map-2026 .service i {
+      color: var(--viz-series-4);
+    }
+
+    #disneyland-map-2026 .map-key {
+      margin-top: 0.75rem;
+    }
+
+    #disneyland-map-2026 .key-group h3 {
+      margin: 0 0 0.35rem;
+    }
+
+    #disneyland-map-2026 .key-items {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    #disneyland-map-2026 .key-item {
+      display: grid;
+      grid-template-columns: 1.55rem minmax(0, 1fr);
+      align-items: start;
+      gap: 0.35rem;
+    }
+
+    #disneyland-map-2026 .key-number {
+      color: var(--muted-foreground);
+      font-variant-numeric: tabular-nums;
+      text-align: end;
+    }
+
+    #disneyland-map-2026 .line-key {
+      display: inline-block;
+      width: 1.7rem;
+      border-top: 3px solid var(--foreground);
+      opacity: 0.4;
+    }
+
+    #disneyland-map-2026 .line-key.rail-key {
+      border-top-style: dashed;
+    }
+
+    #disneyland-map-2026 .line-key.mono-key {
+      border-color: var(--viz-series-4);
+      border-top-style: solid;
+      opacity: 1;
+    }
+
+    @media (max-width: 480px) {
+      #disneyland-map-2026 .map-wrap {
+        height: 680px;
+      }
+
+      #disneyland-map-2026 .land-label {
+        max-width: 31%;
+      }
+
+      #disneyland-map-2026 .marker {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  </style>
+
+  <div class="viz-row map-meta text-small">
+    <span class="text-muted">Schematic visitor map · not to scale</span>
+    <span class="text-muted">Verified July 29, 2026</span>
+  </div>
+
+  <div class="map-wrap" role="img" aria-label="Schematic map of Disneyland Park showing nine themed lands, 25 major attractions, the Disneyland Railroad, the Monorail, First Aid and Baby Care. The entrance is at the bottom.">
+    <svg class="park-svg" viewBox="0 0 1000 1100" preserveAspectRatio="none" aria-hidden="true">
+      <path class="zone zone-west" d="M54 75 C105 28 265 34 340 82 L356 262 C315 316 205 318 76 274 C38 218 34 135 54 75 Z"/>
+      <path class="zone zone-west" d="M33 279 C91 246 212 254 294 300 L310 457 C255 492 132 486 54 443 C23 395 18 327 33 279 Z"/>
+      <path class="zone zone-west" d="M58 466 C126 432 245 439 313 488 L301 635 C220 668 127 653 62 611 C39 564 36 507 58 466 Z"/>
+      <path class="zone zone-west" d="M155 642 C214 604 345 609 413 664 L405 823 C332 851 226 842 160 797 C140 746 137 689 155 642 Z"/>
+      <path class="zone zone-center" d="M305 352 C355 312 462 314 518 355 L522 555 C464 593 367 583 319 540 C294 482 290 410 305 352 Z"/>
+      <path class="zone zone-center" d="M413 294 C486 247 635 259 704 319 L699 686 C639 727 493 730 415 678 C389 586 387 392 413 294 Z"/>
+      <path class="zone zone-center" d="M430 61 C500 27 647 33 708 82 L704 284 C626 317 510 310 441 270 C417 206 415 122 430 61 Z"/>
+      <path class="zone zone-center" d="M418 706 C454 675 552 673 587 710 L605 1058 C551 1081 457 1079 405 1050 L405 783 C407 751 410 730 418 706 Z"/>
+      <path class="zone zone-east" d="M702 294 C769 256 902 264 954 321 L953 789 C896 835 775 831 704 787 C676 672 678 398 702 294 Z"/>
+
+      <path class="water" d="M292 239 C344 197 445 205 490 255 C530 301 511 367 479 405 C447 444 456 502 500 546 C455 584 368 579 321 536 C282 501 283 452 312 412 C345 366 346 326 305 294 C287 279 282 257 292 239 Z"/>
+
+      <path class="walkway" d="M499 1040 L500 862 L500 734"/>
+      <path class="walkway" d="M500 734 C428 690 354 680 268 705"/>
+      <path class="walkway" d="M500 734 C580 694 702 688 816 678"/>
+      <path class="walkway" d="M500 685 C493 590 500 488 514 398"/>
+      <path class="walkway" d="M470 517 C386 565 293 577 210 554"/>
+      <path class="walkway" d="M444 425 C363 396 266 375 179 359"/>
+      <path class="walkway" d="M414 334 C319 275 247 205 201 150"/>
+      <path class="walkway" d="M538 394 C584 329 595 236 584 147"/>
+      <path class="walkway" d="M580 523 C675 488 758 471 835 475"/>
+
+      <path class="rail" d="M111 132 C238 48 747 32 892 149 C965 208 970 833 871 915 C768 1000 224 1013 111 904 C39 834 37 194 111 132 Z"/>
+      <path class="monorail" d="M947 520 C867 500 792 521 736 588 C684 651 659 727 706 774 C753 820 856 784 894 718"/>
+
+      <path class="castle-mark" d="M470 711 L470 678 L485 678 L485 650 L500 629 L515 650 L515 678 L530 678 L530 711 Z"/>
+      <path class="entrance-mark" d="M472 1067 L472 1038 L489 1038 L500 1020 L511 1038 L528 1038 L528 1067 Z"/>
+    </svg>
+
+    <span class="land-label text-small" style="left:20%;top:8.5%">Star Wars: Galaxy’s Edge</span>
+    <span class="land-label text-small" style="left:15%;top:29%">Bayou Country</span>
+    <span class="land-label text-small" style="left:17%;top:46%">New Orleans Square</span>
+    <span class="land-label text-small" style="left:28%;top:61%">Adventureland</span>
+    <span class="land-label text-small" style="left:38%;top:36%">Frontierland</span>
+    <span class="land-label text-small" style="left:54%;top:29%">Mickey’s Toontown</span>
+    <span class="land-label text-small" style="left:55%;top:48%">Fantasyland</span>
+    <span class="land-label text-small" style="left:83%;top:37%">Tomorrowland</span>
+    <span class="land-label text-small" style="left:50%;top:86%">Main Street, U.S.A.</span>
+
+    <span class="marker" style="left:50%;top:82%" aria-hidden="true">1</span>
+    <span class="marker" style="left:30%;top:68%" aria-hidden="true">2</span>
+    <span class="marker" style="left:23%;top:72%" aria-hidden="true">3</span>
+    <span class="marker" style="left:18%;top:64%" aria-hidden="true">4</span>
+    <span class="marker" style="left:23%;top:53%" aria-hidden="true">5</span>
+    <span class="marker" style="left:13%;top:47%" aria-hidden="true">6</span>
+    <span class="marker" style="left:14%;top:34%" aria-hidden="true">7</span>
+    <span class="marker" style="left:22%;top:30%" aria-hidden="true">8</span>
+    <span class="marker" style="left:13%;top:16%" aria-hidden="true">9</span>
+    <span class="marker" style="left:26%;top:12%" aria-hidden="true">10</span>
+    <span class="marker" style="left:38%;top:44%" aria-hidden="true">11</span>
+    <span class="marker" style="left:34%;top:51%" aria-hidden="true">12</span>
+    <span class="marker" style="left:50%;top:64%" aria-hidden="true">13</span>
+    <span class="marker" style="left:47%;top:56%" aria-hidden="true">14</span>
+    <span class="marker" style="left:57%;top:52%" aria-hidden="true">15</span>
+    <span class="marker" style="left:66%;top:48%" aria-hidden="true">16</span>
+    <span class="marker" style="left:62%;top:36%" aria-hidden="true">17</span>
+    <span class="marker" style="left:54%;top:16%" aria-hidden="true">18</span>
+    <span class="marker" style="left:63%;top:23%" aria-hidden="true">19</span>
+    <span class="marker" style="left:47%;top:23%" aria-hidden="true">20</span>
+    <span class="marker" style="left:86%;top:65%" aria-hidden="true">21</span>
+    <span class="marker" style="left:79%;top:61%" aria-hidden="true">22</span>
+    <span class="marker" style="left:75%;top:69%" aria-hidden="true">23</span>
+    <span class="marker" style="left:72%;top:40%" aria-hidden="true">24</span>
+    <span class="marker" style="left:83%;top:31%" aria-hidden="true">25</span>
+
+    <span class="service text-small" style="left:59%;top:73%">
+      <i data-lucide="cross" aria-hidden="true"></i> First Aid + Baby Care
+    </span>
+    <span class="service text-small" style="left:50%;top:96%">
+      <i data-lucide="door-open" aria-hidden="true"></i> Main Entrance
+    </span>
+  </div>
+
+  <div class="viz-grid map-key text-small" aria-label="Map key">
+    <section class="key-group">
+      <h3>Main Street & Adventureland</h3>
+      <div class="key-items">
+        <div class="key-item"><span class="key-number">1</span><span>Walt Disney — A Magical Life</span></div>
+        <div class="key-item"><span class="key-number">2</span><span>Enchanted Tiki Room</span></div>
+        <div class="key-item"><span class="key-number">3</span><span>Jungle Cruise</span></div>
+        <div class="key-item"><span class="key-number">4</span><span>Indiana Jones Adventure</span></div>
+      </div>
+    </section>
+
+    <section class="key-group">
+      <h3>West side</h3>
+      <div class="key-items">
+        <div class="key-item"><span class="key-number">5</span><span>Pirates of the Caribbean</span></div>
+        <div class="key-item"><span class="key-number">6</span><span>Haunted Mansion</span></div>
+        <div class="key-item"><span class="key-number">7</span><span>Tiana’s Bayou Adventure</span></div>
+        <div class="key-item"><span class="key-number">8</span><span>The Many Adventures of Winnie the Pooh</span></div>
+        <div class="key-item"><span class="key-number">9</span><span>Star Wars: Rise of the Resistance</span></div>
+        <div class="key-item"><span class="key-number">10</span><span>Millennium Falcon: Smugglers Run</span></div>
+        <div class="key-item"><span class="key-number">11</span><span>Big Thunder Mountain Railroad</span></div>
+        <div class="key-item"><span class="key-number">12</span><span>Mark Twain Riverboat</span></div>
+      </div>
+    </section>
+
+    <section class="key-group">
+      <h3>Fantasyland</h3>
+      <div class="key-items">
+        <div class="key-item"><span class="key-number">13</span><span>Sleeping Beauty Castle</span></div>
+        <div class="key-item"><span class="key-number">14</span><span>Peter Pan’s Flight</span></div>
+        <div class="key-item"><span class="key-number">15</span><span>Dumbo the Flying Elephant</span></div>
+        <div class="key-item"><span class="key-number">16</span><span>Matterhorn Bobsleds</span></div>
+        <div class="key-item"><span class="key-number">17</span><span>“it’s a small world”</span></div>
+      </div>
+    </section>
+
+    <section class="key-group">
+      <h3>Mickey’s Toontown</h3>
+      <div class="key-items">
+        <div class="key-item"><span class="key-number">18</span><span>Mickey & Minnie’s Runaway Railway</span></div>
+        <div class="key-item"><span class="key-number">19</span><span>Roger Rabbit’s Car Toon Spin</span></div>
+        <div class="key-item"><span class="key-number">20</span><span>Chip ’n’ Dale’s GADGETcoaster</span></div>
+      </div>
+    </section>
+
+    <section class="key-group">
+      <h3>Tomorrowland</h3>
+      <div class="key-items">
+        <div class="key-item"><span class="key-number">21</span><span>Space Mountain</span></div>
+        <div class="key-item"><span class="key-number">22</span><span>Star Tours</span></div>
+        <div class="key-item"><span class="key-number">23</span><span>Buzz Lightyear Astro Blasters</span></div>
+        <div class="key-item"><span class="key-number">24</span><span>Finding Nemo Submarine Voyage</span></div>
+        <div class="key-item"><span class="key-number">25</span><span>Autopia</span></div>
+      </div>
+    </section>
+
+    <section class="key-group">
+      <h3>Transportation</h3>
+      <div class="key-items">
+        <div class="key-item"><span class="line-key rail-key" aria-hidden="true"></span><span>Disneyland Railroad</span></div>
+        <div class="key-item"><span class="line-key mono-key" aria-hidden="true"></span><span>Disneyland Monorail</span></div>
+      </div>
+    </section>
+  </div>
+</div>
+</body></html>

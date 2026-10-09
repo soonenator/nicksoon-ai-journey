@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ChatGPT Skills — Interactive Guide</title>
+<style>
+  :root{
+    --bg:#0b0f14; --card:#121922; --card2:#17212d; --text:#eef4fb;
+    --muted:#9fb0c3; --accent:#6ee7b7; --accent2:#60a5fa; --border:#273445;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0b0f14,#0e1520);color:var(--text);
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,sans-serif}
+  .wrap{max-width:760px;margin:auto;padding:18px 14px 40px}
+  h1{font-size:27px;line-height:1.1;margin:8px 0}
+  h2{font-size:19px;margin:0 0 10px}
+  p{color:var(--muted);line-height:1.5}
+  .badge{display:inline-block;padding:6px 10px;background:#173026;color:#a7f3d0;border:1px solid #24533e;
+         border-radius:999px;font-weight:700;font-size:12px}
+  .card{background:rgba(18,25,34,.96);border:1px solid var(--border);border-radius:18px;padding:16px;margin:12px 0;
+        box-shadow:0 10px 30px rgba(0,0,0,.18)}
+  .tabs{display:flex;gap:8px;overflow:auto;padding:4px 0 10px}
+  .tab{border:1px solid var(--border);background:var(--card2);color:var(--text);padding:9px 12px;border-radius:12px;
+       white-space:nowrap;font-weight:700}
+  .tab.active{background:#19352c;border-color:#2b6f55;color:#b7f7dc}
+  .panel{display:none}
+  .panel.active{display:block}
+  .step{display:flex;gap:12px;margin:12px 0}
+  .num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+       background:#19352c;color:#b7f7dc;font-weight:800;flex:0 0 28px}
+  .step b{display:block;margin-bottom:3px}
+  .step span{color:var(--muted);font-size:14px;line-height:1.4}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  button{cursor:pointer}
+  .choice{width:100%;text-align:left;border:1px solid var(--border);background:var(--card2);color:var(--text);
+          padding:12px;border-radius:14px;margin:6px 0}
+  .choice:hover{border-color:#3f5d78}
+  .result{display:none;background:#0f1d18;border:1px solid #285743;border-radius:14px;padding:13px;margin-top:10px}
+  textarea{width:100%;min-height:210px;background:#091018;color:#e7f0f9;border:1px solid var(--border);border-radius:14px;
+           padding:12px;font:14px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}
+  .copy{background:#1c3f33;color:#c8f7e4;border:1px solid #2e7058;padding:10px 12px;border-radius:12px;font-weight:800}
+  .small{font-size:13px;color:var(--muted)}
+  .pillrow{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+  .pill{padding:6px 9px;border-radius:999px;background:#17212d;border:1px solid var(--border);font-size:12px;color:#c8d5e3}
+</style>
+</head>
+<body><aside style="font:13px/1.5 system-ui,sans-serif;background:#fff4cf;color:#3b3321;padding:12px 16px;border-bottom:1px solid #d6c584;position:relative;z-index:20"><strong>Archived artifact · August 29, 2026</strong><br>Historical educational prototype. Product availability and instructions have not been updated or reverified.</aside>
+<div class="wrap">
+  <span class="badge">Interactive guide</span>
+  <h1>How to make a ChatGPT Skill</h1>
+  <p>A fast guide to Skills, Projects, and GPTs — plus a reusable prompt to build your own workflow.</p>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="skill">Make a Skill</button>
+    <button class="tab" data-tab="chooser">Which should I use?</button>
+    <button class="tab" data-tab="template">Skill Template</button>
+    <button class="tab" data-tab="examples">Examples</button>
+  </div>
+
+  <div class="panel active" id="skill">
+    <div class="card">
+      <h2>Fastest path</h2>
+      <div class="step"><div class="num">1</div><div><b>Open Skills</b><span>In a workspace where Skills are enabled, open the Skills area from ChatGPT.</span></div></div>
+      <div class="step"><div class="num">2</div><div><b>Choose Create</b><span>Start a new personal or workspace Skill.</span></div></div>
+      <div class="step"><div class="num">3</div><div><b>Describe the repeatable job</b><span>Explain what goes in, what ChatGPT should do, and what the output should look like.</span></div></div>
+      <div class="step"><div class="num">4</div><div><b>Add rules + examples</b><span>Specify required steps, quality checks, templates, and things it must never invent.</span></div></div>
+      <div class="step"><div class="num">5</div><div><b>Install and test</b><span>Try it on 2–3 realistic examples and tighten the instructions where results vary.</span></div></div>
+    </div>
+
+    <div class="card">
+      <h2>Important availability note</h2>
+      <p>Skills availability depends on your ChatGPT plan and workspace configuration. If you don’t see Skills, a <b>Project</b> or <b>custom GPT</b> can reproduce most of the same behavior.</p>
+      <div class="pillrow">
+        <span class="pill">Skill = reusable workflow</span>
+        <span class="pill">Project = ongoing context</span>
+        <span class="pill">GPT = specialized assistant</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="chooser">
+    <div class="card">
+      <h2>What are you trying to build?</h2>
+      <button class="choice" onclick="showResult('skillResult')"><b>A repeatable process</b><br><span class="small">Example: analyze every discovery call the same way</span></button>
+      <button class="choice" onclick="showResult('projectResult')"><b>An ongoing body of work</b><br><span class="small">Example: one client, job search, or research project</span></button>
+      <button class="choice" onclick="showResult('gptResult')"><b>A specialized assistant</b><br><span class="small">Example: a branded coach or team helper</span></button>
+
+      <div class="result" id="skillResult"><b>Use a Skill.</b><br><span class="small">Best when the process should be consistent every time, regardless of the conversation.</span></div>
+      <div class="result" id="projectResult"><b>Use a Project.</b><br><span class="small">Best when the files, decisions, history, and context should persist around one initiative.</span></div>
+      <div class="result" id="gptResult"><b>Use a custom GPT.</b><br><span class="small">Best when you want a purpose-built assistant with its own identity, knowledge, and tool setup.</span></div>
+    </div>
+  </div>
+
+  <div class="panel" id="template">
+    <div class="card">
+      <h2>Copy this into ChatGPT</h2>
+      <textarea id="prompt">Build me a reusable Skill for this workflow:
+
+GOAL
+[What job should this Skill reliably perform?]
+
+WHEN TO USE IT
+[What kinds of requests should trigger this Skill?]
+
+INPUTS
+[What information/files should it expect?]
+
+PROCESS
+1. [Step one]
+2. [Step two]
+3. [Step three]
+4. Validate the result against the source material.
+
+OUTPUT
+[Describe the exact output format.]
+
+RULES
+- Do not invent facts, metrics, quotes, or source material.
+- Clearly identify anything uncertain or missing.
+- Preserve important names, dates, numbers, and terminology.
+- Make the output easy to scan.
+- Ask for clarification only when the task truly cannot be completed without it.
+
+QUALITY CHECK
+Before finishing, verify:
+- Every requested section is present.
+- Claims are supported by the provided information.
+- The format matches the requested structure.
+
+EXAMPLE INPUT
+[Paste an example.]
+
+EXAMPLE OUTPUT
+[Paste an ideal example.]</textarea>
+      <br><br>
+      <button class="copy" onclick="copyPrompt()">Copy template</button>
+      <span id="copyMsg" class="small" style="margin-left:8px"></span>
+    </div>
+  </div>
+
+  <div class="panel" id="examples">
+    <div class="grid">
+      <div class="card"><h2>Discovery Calls</h2><p>Take a transcript → extract pain points, workflows, risks, and training opportunities → output recommendations in a consistent format.</p></div>
+      <div class="card"><h2>Resume Review</h2><p>Compare a resume to a job description → score evidence → identify gaps → suggest only source-supported changes.</p></div>
+      <div class="card"><h2>Meeting Cleanup</h2><p>Turn rough notes into decisions, action items, owners, unresolved questions, and a concise executive recap.</p></div>
+      <div class="card"><h2>Training Design</h2><p>Take client needs → select examples → define demo, guided practice, skill learned, and final participant artifact.</p></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('active'));
+    panels.forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById(t.dataset.tab).classList.add('active');
+  }));
+
+  function showResult(id){
+    document.querySelectorAll('.result').forEach(x=>x.style.display='none');
+    document.getElementById(id).style.display='block';
+  }
+
+  async function copyPrompt(){
+    const text = document.getElementById('prompt').value;
+    try{
+      await navigator.clipboard.writeText(text);
+      document.getElementById('copyMsg').textContent = 'Copied!';
+    }catch(e){
+      document.getElementById('prompt').select();
+      const copied = document.execCommand('copy');
+      document.getElementById('copyMsg').textContent = copied ? 'Copied!' : 'Text selected. Use your browser’s Copy command.';
+    }
+    setTimeout(()=>document.getElementById('copyMsg').textContent='',1500);
+  }
+</script>
+</body>
+</html>

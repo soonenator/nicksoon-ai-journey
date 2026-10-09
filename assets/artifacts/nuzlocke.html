@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>5 Easy Pokémon ROM Hacks with Built-In Nuzlocke Modes</title>
+<style>
+  :root{
+    --bg:#0f172a; --panel:#111827; --panel2:#172033; --text:#f8fafc;
+    --muted:#b8c2d3; --line:#2b3850; --accent:#facc15; --good:#86efac;
+    --chip:#22304a; --blue:#93c5fd;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:linear-gradient(180deg,#10182b,#0b1220);color:var(--text)}
+  .wrap{max-width:1060px;margin:auto;padding:24px}
+  h1{font-size:clamp(26px,4vw,42px);line-height:1.05;margin:0 0 10px}
+  .lede{color:var(--muted);max-width:850px;margin:0 0 20px}
+  .controls{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+  button,.linkbtn{border:1px solid var(--line);background:var(--chip);color:var(--text);padding:9px 12px;border-radius:999px;cursor:pointer;text-decoration:none;font-weight:650}
+  button.active{background:var(--accent);color:#111827;border-color:var(--accent)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+  .card{background:rgba(17,24,39,.94);border:1px solid var(--line);border-radius:18px;padding:18px;transition:.18s transform,.18s border-color;position:relative}
+  .card:hover{transform:translateY(-2px);border-color:#52627f}
+  .rank{position:absolute;right:14px;top:12px;font-weight:900;font-size:28px;color:#52627f}
+  .title{font-size:21px;font-weight:800;margin:0 42px 6px 0}
+  .best{color:var(--accent);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 12px}
+  .chip{font-size:12px;background:var(--chip);color:#d9e3f3;border:1px solid var(--line);padding:4px 8px;border-radius:999px}
+  .score{display:grid;grid-template-columns:90px 1fr 30px;align-items:center;gap:8px;margin:7px 0;color:var(--muted);font-size:13px}
+  .bar{height:7px;background:#26334a;border-radius:99px;overflow:hidden}
+  .fill{height:100%;background:linear-gradient(90deg,#93c5fd,#86efac);border-radius:99px}
+  details{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+  summary{cursor:pointer;font-weight:750;color:var(--blue)}
+  .why{color:#d7dfec}
+  .note{color:var(--muted);font-size:13px}
+  .warn{margin:18px 0 0;padding:14px;border:1px solid #5c4b1f;background:#2b2413;border-radius:14px;color:#fde68a}
+  .footer{margin-top:18px;color:var(--muted);font-size:12px}
+  .hidden{display:none}
+</style>
+</head>
+<body><aside style="font:13px/1.5 system-ui,sans-serif;background:#fff4cf;color:#3b3321;padding:12px 16px;border-bottom:1px solid #d6c584;position:relative;z-index:20"><strong>Archived artifact · August 26, 2026</strong><br>Historical comparison interface. Game details and external references have not been reverified; no game files are included.</aside>
+<div class="wrap">
+  <div class="best">Nick's shortlist • August 2026</div>
+  <h1>5 Pokémon ROM hacks with built-in Nuzlocke modes</h1>
+  <p class="lede">Ranked for your priorities: <b>not brutally difficult</b>, <b>simple to start</b>, and preferably <b>lots of generations</b>. Tap a filter, then expand any card for the tradeoffs.</p>
+
+  <div class="controls">
+    <button class="active" data-filter="all">Best overall</button>
+    <button data-filter="easy">Easiest</button>
+    <button data-filter="broad">Broad Pokédex</button>
+    <button data-filter="linear">Most traditional</button>
+  </div>
+
+  <div class="grid" id="grid">
+    <article class="card" data-tags="easy broad linear" data-ease="5" data-dex="5">
+      <div class="rank">1</div>
+      <div class="best">Best match</div>
+      <h2 class="title">Pokémon Emerald Crest</h2>
+      <div class="chips"><span class="chip">Gen 1–9</span><span class="chip">Built-in Nuzlocke</span><span class="chip">Easy / Normal / Hard</span><span class="chip">Emerald base</span></div>
+      <p class="why">The best balance of a huge roster and low friction. It keeps the familiar Emerald adventure, gives you a real Nuzlocke toggle, and lets you stay on Easy/Normal instead of turning the game into a difficulty hack.</p>
+      <div class="score"><span>Ease</span><div class="bar"><div class="fill" style="width:100%"></div></div><b>5</b></div>
+      <div class="score"><span>Dex breadth</span><div class="bar"><div class="fill" style="width:100%"></div></div><b>5</b></div>
+      <details><summary>Why I’d pick it</summary>
+        <p>All generations 1–9 are represented, and the project’s current site distributes a patch file with simple patching instructions. It also has plenty of optional extras, but you can ignore most of them and play a fairly recognizable Emerald run.</p>
+        <p class="note"><b>Complexity caveat:</b> there are many optional systems (open world, randomizer, Mega Evolution, Z-Moves, seasons), so resist the temptation to turn everything on for your first run.</p>
+        <a class="linkbtn" target="_blank" rel="noopener noreferrer" href="https://romhackstudios.github.io/">Project / patch page</a>
+      </details>
+    </article>
+
+    <article class="card" data-tags="easy linear" data-ease="5" data-dex="3">
+      <div class="rank">2</div>
+      <div class="best">Simplest Nuzlocke setup</div>
+      <h2 class="title">Pokémon Modern Emerald</h2>
+      <div class="chips"><span class="chip">423 Pokémon total</span><span class="chip">Nuzlocke Easy / Normal / Hardcore</span><span class="chip">Very customizable</span></div>
+      <p class="why">Probably the cleanest choice if you want the game itself to enforce the challenge without making bosses absurd. It explicitly includes an <b>Easy Nuzlocke mode</b> plus level caps and lots of quality-of-life switches.</p>
+      <div class="score"><span>Ease</span><div class="bar"><div class="fill" style="width:100%"></div></div><b>5</b></div>
+      <div class="score"><span>Dex breadth</span><div class="bar"><div class="fill" style="width:60%"></div></div><b>3</b></div>
+      <details><summary>Why I’d pick it</summary>
+        <p>Its difficulty philosophy is specifically not “super hard.” Easy mode lowers opposing levels and boosts experience, while the Nuzlocke menu can enforce permadeath and other rules. The expanded roster is much broader than vanilla Emerald, although it is not a full Gen 1–9 dex.</p>
+        <p class="note"><b>Best for:</b> your first enforced Nuzlocke if you care more about comfort than having every modern Pokémon.</p>
+        <a class="linkbtn" target="_blank" rel="noopener noreferrer" href="https://github.com/resetes12/pokeemerald/releases">Official releases</a>
+      </details>
+    </article>
+
+    <article class="card" data-tags="easy broad" data-ease="4" data-dex="5">
+      <div class="rank">3</div>
+      <div class="best">Best open-world option</div>
+      <h2 class="title">Pokémon R.O.W.E.</h2>
+      <div class="chips"><span class="chip">Gen 1–9</span><span class="chip">Built-in Nuzlocke</span><span class="chip">Easy / Normal / Hard</span><span class="chip">Open world</span></div>
+      <p class="why">Excellent if you want tons of encounter variety and built-in Nuzlocke enforcement. The difficulty can be forgiving; the only reason it is #3 is that choosing your own gym order and route makes the run a little less straightforward.</p>
+      <div class="score"><span>Ease</span><div class="bar"><div class="fill" style="width:80%"></div></div><b>4</b></div>
+      <div class="score"><span>Dex breadth</span><div class="bar"><div class="fill" style="width:100%"></div></div><b>5</b></div>
+      <details><summary>Why I’d pick it</summary>
+        <p>Current 2.x-era coverage includes Pokémon through Gen 9 and difficulty settings. The open-world design gives you flexibility to recover from deaths by exploring elsewhere—but it also means more choices about what counts as an area and when to take gyms.</p>
+        <p class="note"><b>Best for:</b> replayability after you’ve done one simpler Nuzlocke.</p>
+        <a class="linkbtn" target="_blank" rel="noopener noreferrer" href="https://github.com/Iamdivinefox/Rowe">Project source / patch links</a>
+      </details>
+    </article>
+
+    <article class="card" data-tags="easy broad linear" data-ease="4" data-dex="4">
+      <div class="rank">4</div>
+      <div class="best">Best FireRed-style option</div>
+      <h2 class="title">Nameless FireRed Project</h2>
+      <div class="chips"><span class="chip">Pokémon through Gen 6</span><span class="chip">Built-in Nuzlocke options</span><span class="chip">Low grind</span><span class="chip">FireRed story</span></div>
+      <p class="why">A very good “classic Pokémon, but the game enforces the rules” pick. It has permadeath-style restrictions, encounter clauses, level limits, modern Exp. Share, and a broad Gen 1–6 roster.</p>
+      <div class="score"><span>Ease</span><div class="bar"><div class="fill" style="width:80%"></div></div><b>4</b></div>
+      <div class="score"><span>Dex breadth</span><div class="bar"><div class="fill" style="width:80%"></div></div><b>4</b></div>
+      <details><summary>Why I’d pick it</summary>
+        <p>Community Nuzlockers have long recommended it specifically for built-in enforcement without Radical Red-level difficulty. It is older than the other picks, though, and the last widely circulated release is from 2017, so expect a few quirks.</p>
+        <p class="note"><b>Best for:</b> a mostly familiar Kanto story with lots of newer Pokémon.</p>
+        <a class="linkbtn" target="_blank" rel="noopener noreferrer" href="https://www.pokeharbor.com/2021/06/pokemon-nameless-firered-project/">Project info / source reference</a>
+      </details>
+    </article>
+
+    <article class="card" data-tags="easy linear" data-ease="5" data-dex="2">
+      <div class="rank">5</div>
+      <div class="best">Easiest / most vanilla-like</div>
+      <h2 class="title">Pokémon Recharged Emerald</h2>
+      <div class="chips"><span class="chip">Gen 1–3</span><span class="chip">Built-in Nuzlocke</span><span class="chip">Easy mode</span><span class="chip">Very polished QoL</span></div>
+      <p class="why">This misses your “many generations” preference, but it may be the least complicated game here. It is basically a polished Emerald with an integrated Nuzlocke, Easy mode, level caps, faster battles, and modern convenience features.</p>
+      <div class="score"><span>Ease</span><div class="bar"><div class="fill" style="width:100%"></div></div><b>5</b></div>
+      <div class="score"><span>Dex breadth</span><div class="bar"><div class="fill" style="width:40%"></div></div><b>2</b></div>
+      <details><summary>Why I’d pick it</summary>
+        <p>The creator distributes a free patch and explicitly lists Nuzlocke and level-cap support. Easy mode removes opponent EVs/IVs and adjusts levels, so the challenge comes from Nuzlocke rules rather than competitive boss design.</p>
+        <p class="note"><b>Best for:</b> the lowest-stress first run.</p>
+        <a class="linkbtn" target="_blank" rel="noopener noreferrer" href="https://ko-fi.com/s/bcfd8cef1c">Creator's free patch page</a>
+      </details>
+    </article>
+  </div>
+
+  <div class="warn"><b>My pick for you:</b> Start with <b>Emerald Crest</b> on Easy or Normal with only the Nuzlocke toggle enabled. If the huge feature list feels distracting, switch to <b>Modern Emerald</b> and use its Nuzlocke Easy mode.</div>
+  <div class="footer">Download note: these links point to project/patch pages rather than copyrighted base ROM downloads. You’ll typically need a legally obtained compatible base ROM and a patcher/emulator.</div>
+</div>
+
+<script>
+const buttons=[...document.querySelectorAll('button[data-filter]')];
+const cards=[...document.querySelectorAll('.card')];
+buttons.forEach(btn=>btn.addEventListener('click',()=>{
+  buttons.forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+  const f=btn.dataset.filter;
+  cards.forEach(c=>c.classList.toggle('hidden', !(f==='all'||c.dataset.tags.split(' ').includes(f))));
+}));
+</script>
+</body>
+</html>

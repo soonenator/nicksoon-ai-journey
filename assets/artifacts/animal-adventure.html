@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animal Adventure</title>
+  <meta name="description" content="A playful animal habitat explorer for kids and families." />
+  <style>
+    :root {
+      --ink: #24352b;
+      --cream: #fffaf0;
+      --leaf: #4d8b58;
+      --leaf-dark: #2f6540;
+      --sun: #f6c85f;
+      --sky: #ccecff;
+      --card: rgba(255,255,255,0.9);
+      --shadow: 0 14px 40px rgba(49, 92, 64, 0.15);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Nunito", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, #fff1bd 0, transparent 34%),
+        linear-gradient(180deg, #dff6ff 0%, #fffaf0 38%, #eef7df 100%);
+      min-height: 100vh;
+    }
+
+    button, input { font: inherit; }
+
+    .hero {
+      min-height: 76vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    .hero::before {
+      width: 360px;
+      height: 360px;
+      background: #9ddf90;
+      left: -120px;
+      bottom: -100px;
+    }
+
+    .hero::after {
+      width: 280px;
+      height: 280px;
+      background: #ffd47d;
+      right: -100px;
+      top: -80px;
+    }
+
+    .hero-card {
+      position: relative;
+      z-index: 1;
+      width: min(940px, 100%);
+      text-align: center;
+      padding: 48px 28px;
+      background: rgba(255,255,255,0.76);
+      backdrop-filter: blur(14px);
+      border: 2px solid rgba(255,255,255,0.8);
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--leaf-dark);
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 8px 22px rgba(49, 92, 64, 0.08);
+    }
+
+    h1, h2, h3 {
+      font-family: "Baloo 2", "Trebuchet MS", sans-serif;
+      margin: 0;
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(3.2rem, 9vw, 6.8rem);
+      line-height: 0.94;
+      color: var(--leaf-dark);
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin: 22px auto 30px;
+      font-size: clamp(1.05rem, 2.3vw, 1.35rem);
+      line-height: 1.6;
+    }
+
+    .start-btn {
+      border: none;
+      background: var(--leaf-dark);
+      color: white;
+      padding: 15px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(47,101,64,0.25);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .start-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(47,101,64,0.3);
+    }
+
+    .mascots {
+      font-size: clamp(2rem, 6vw, 4.6rem);
+      letter-spacing: 8px;
+      margin-top: 28px;
+    }
+
+    main {
+      padding: 0 20px 70px;
+    }
+
+    .section {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      color: var(--leaf-dark);
+    }
+
+    .section-header p {
+      margin: 8px auto 0;
+      max-width: 680px;
+      line-height: 1.6;
+      color: #526359;
+    }
+
+    .habitats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .habitat-card {
+      border: none;
+      text-align: left;
+      padding: 24px;
+      border-radius: 28px;
+      min-height: 220px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .habitat-card:hover {
+      transform: translateY(-5px) rotate(-0.4deg);
+      box-shadow: 0 18px 40px rgba(49, 92, 64, 0.2);
+    }
+
+    .habitat-card span {
+      font-size: 3.4rem;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .habitat-card h3 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .habitat-card p {
+      margin: 0;
+      max-width: 220px;
+      line-height: 1.5;
+      font-weight: 700;
+      color: rgba(36,53,43,0.72);
+    }
+
+    .forest { background: linear-gradient(145deg, #d9f2c9, #eef9e4); }
+    .ocean { background: linear-gradient(145deg, #bfe9ff, #e8f8ff); }
+    .desert { background: linear-gradient(145deg, #ffe5a3, #fff3d0); }
+    .arctic { background: linear-gradient(145deg, #e7f5ff, #ffffff); }
+    .jungle { background: linear-gradient(145deg, #c3efc5, #e7f7d8); }
+    .mountain { background: linear-gradient(145deg, #dce2ef, #f2f4f8); }
+
+    .explorer-panel {
+      margin-top: 54px;
+      background: var(--card);
+      border-radius: 34px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .panel-top h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--leaf-dark);
+    }
+
+    .badge {
+      background: #fff6c9;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .animal-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .animal-card {
+      background: #fff;
+      border: 2px solid #edf2ea;
+      border-radius: 22px;
+      padding: 20px 14px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease;
+    }
+
+    .animal-card:hover {
+      transform: translateY(-3px);
+      border-color: #9dcba5;
+    }
+
+    .animal-emoji {
+      display: block;
+      font-size: 3.3rem;
+      margin-bottom: 10px;
+    }
+
+    .animal-card strong {
+      display: block;
+      font-family: "Baloo 2", "Trebuchet MS", sans-serif;
+      font-size: 1.35rem;
+    }
+
+    .animal-card small {
+      display: block;
+      margin-top: 4px;
+      color: #65746b;
+    }
+
+    .fact-box {
+      margin-top: 22px;
+      border-radius: 20px;
+      padding: 18px;
+      background: #f4f8ef;
+      border-left: 6px solid var(--leaf);
+      line-height: 1.6;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 34px 20px 50px;
+      color: #617067;
+    }
+
+    @media (max-width: 850px) {
+      .habitats { grid-template-columns: repeat(2, 1fr); }
+      .animal-grid { grid-template-columns: repeat(2, 1fr); }
+      .panel-top { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 560px) {
+      .hero { min-height: auto; padding: 16px; }
+      .hero-card { padding: 34px 20px; border-radius: 28px; }
+      .habitats { grid-template-columns: 1fr; }
+      .animal-grid { grid-template-columns: 1fr 1fr; }
+      .explorer-panel { padding: 22px 16px; border-radius: 26px; }
+      .mascots { letter-spacing: 3px; }
+    }
+  </style>
+</head>
+<body><aside style="font:13px/1.5 system-ui,sans-serif;background:#fff4cf;color:#3b3321;padding:12px 16px;border-bottom:1px solid #d6c584;position:relative;z-index:20"><strong>Archived artifact · July 31, 2026</strong><br>Original habitat explorer, with an incorrectly categorized penguin entry removed from the Arctic habitat. External fonts are replaced by system fallbacks.</aside>
+  <header class="hero">
+    <div class="hero-card">
+      <div class="eyebrow">🌿 Little Explorer Edition</div>
+      <h1>Animal Adventure</h1>
+      <p>Choose a habitat, meet amazing animals, and collect explorer badges as you learn.</p>
+      <button class="start-btn" onclick="document.getElementById('habitats').scrollIntoView()">Start Exploring</button>
+      <div class="mascots" aria-hidden="true">🐼 🦁 🐘 🐧 🐢</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="habitats">
+      <div class="section-header">
+        <h2>Where should we go?</h2>
+        <p>Pick a habitat to reveal the animals who live there.</p>
+      </div>
+
+      <div class="habitats">
+        <button class="habitat-card forest" data-habitat="Forest">
+          <span>🌲</span>
+          <h3>Forest</h3>
+          <p>Quiet trails, tall trees, and clever woodland animals.</p>
+        </button>
+
+        <button class="habitat-card ocean" data-habitat="Ocean">
+          <span>🌊</span>
+          <h3>Ocean</h3>
+          <p>Dive beneath the waves and meet swimming giants.</p>
+        </button>
+
+        <button class="habitat-card desert" data-habitat="Desert">
+          <span>🏜️</span>
+          <h3>Desert</h3>
+          <p>Sunny dunes, cool nights, and surprising survivors.</p>
+        </button>
+
+        <button class="habitat-card arctic" data-habitat="Arctic">
+          <span>❄️</span>
+          <h3>Arctic</h3>
+          <p>Explore ice, snow, and animals built for the cold.</p>
+        </button>
+
+        <button class="habitat-card jungle" data-habitat="Jungle">
+          <span>🌴</span>
+          <h3>Jungle</h3>
+          <p>Colorful birds, climbing monkeys, and hidden cats.</p>
+        </button>
+
+        <button class="habitat-card mountain" data-habitat="Mountains">
+          <span>🏔️</span>
+          <h3>Mountains</h3>
+          <p>Climb high to find animals living above the clouds.</p>
+        </button>
+      </div>
+
+      <div class="explorer-panel" id="explorer">
+        <div class="panel-top">
+          <div>
+            <div class="eyebrow" id="habitatLabel">🌲 Forest Habitat</div>
+            <h2 id="panelTitle">Meet the forest animals</h2>
+          </div>
+          <div class="badge">🏅 Badges: <span id="badgeCount">0</span></div>
+        </div>
+
+        <div class="animal-grid" id="animalGrid"></div>
+
+        <div class="fact-box" id="factBox">
+          Tap an animal to learn a fun fact and earn an explorer badge.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Made for curious kids, families, and animal lovers.
+  </footer>
+
+  <script>
+    const habitats = {
+      Forest: [
+        ["🦊", "Red Fox", "Red foxes use their bushy tails like warm blankets."],
+        ["🦌", "Deer", "A deer can rotate its ears to listen in different directions."],
+        ["🦉", "Owl", "Owls can turn their heads very far because they have extra neck bones."],
+        ["🐻", "Bear", "Some bears can smell food from miles away."]
+      ],
+      Ocean: [
+        ["🐋", "Blue Whale", "The blue whale is the largest animal known to have lived."],
+        ["🐬", "Dolphin", "Dolphins use clicks and whistles to communicate."],
+        ["🐢", "Sea Turtle", "Sea turtles can travel thousands of miles across the ocean."],
+        ["🦈", "Shark", "Sharks have been swimming in Earth's oceans for hundreds of millions of years."]
+      ],
+      Desert: [
+        ["🐪", "Camel", "Camels store fat, not water, inside their humps."],
+        ["🦂", "Scorpion", "Scorpions glow under ultraviolet light."],
+        ["🦎", "Lizard", "Many desert lizards rest in shade during the hottest part of the day."],
+        ["🦊", "Fennec Fox", "A fennec fox's giant ears help release body heat."]
+      ],
+      Arctic: [
+        ["🐻‍❄️", "Polar Bear", "A polar bear's skin is black beneath its fur."],
+        
+        ["🦭", "Seal", "Seals use their whiskers to sense movement in the water."],
+        ["🦉", "Snowy Owl", "Snowy owls have thick feathers that cover even their feet."]
+      ],
+      Jungle: [
+        ["🐒", "Monkey", "Many monkeys use facial expressions to communicate."],
+        ["🦜", "Macaw", "Macaws use their strong beaks to crack hard nuts."],
+        ["🐆", "Jaguar", "Jaguars are excellent swimmers."],
+        ["🐸", "Tree Frog", "Tree frogs have sticky toe pads that help them climb."]
+      ],
+      Mountains: [
+        ["🐐", "Mountain Goat", "Mountain goats have special hooves that grip steep rocks."],
+        ["🦅", "Golden Eagle", "Golden eagles can spot prey from very far away."],
+        ["🐆", "Snow Leopard", "A snow leopard's long tail helps it balance and stay warm."],
+        ["🦙", "Llama", "Llamas are well adapted to high-altitude environments."]
+      ]
+    };
+
+    let badges = 0;
+    const seen = new Set();
+
+    function renderHabitat(name) {
+      const grid = document.getElementById("animalGrid");
+      const factBox = document.getElementById("factBox");
+      document.getElementById("habitatLabel").textContent = `${habitatEmoji(name)} ${name} Habitat`;
+      document.getElementById("panelTitle").textContent = `Meet the ${name.toLowerCase()} animals`;
+      grid.innerHTML = "";
+      factBox.textContent = "Tap an animal to learn a fun fact and earn an explorer badge.";
+
+      habitats[name].forEach(([emoji, animal, fact]) => {
+        const card = document.createElement("button");
+        card.className = "animal-card";
+        card.innerHTML = `
+          <span class="animal-emoji">${emoji}</span>
+          <strong>${animal}</strong>
+          <small>Tap to discover</small>
+        `;
+        card.addEventListener("click", () => {
+          factBox.innerHTML = `<strong>${emoji} ${animal}:</strong> ${fact}`;
+          const key = `${name}-${animal}`;
+          if (!seen.has(key)) {
+            seen.add(key);
+            badges += 1;
+            document.getElementById("badgeCount").textContent = badges;
+          }
+        });
+        grid.appendChild(card);
+      });
+
+      document.getElementById("explorer").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function habitatEmoji(name) {
+      return {
+        Forest: "🌲",
+        Ocean: "🌊",
+        Desert: "🏜️",
+        Arctic: "❄️",
+        Jungle: "🌴",
+        Mountains: "🏔️"
+      }[name];
+    }
+
+    document.querySelectorAll(".habitat-card").forEach(card => {
+      card.addEventListener("click", () => renderHabitat(card.dataset.habitat));
+    });
+
+    renderHabitat("Forest");
+    window.scrollTo(0, 0);
+  </script>
+</body>
+</html>

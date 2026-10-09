@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#17191f">
   <meta name="description" content="Nick Soon’s 2026 AI Journey: a browsable collection of projects, prototypes, creative experiments, and everyday discoveries.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'self'; base-uri 'self'; form-action 'none'">
   <title>NickSoon AI Journey · Nick Soon</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script src="data.js" defer></script>
+  <script src="artifacts.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -38,7 +39,7 @@
   </section>
   <div class="archive-strip" aria-label="Collection overview"><span><b id="total-count">49</b> collected entries</span><span><b>10</b> months of curiosity</span><span><b id="project-count">18</b> project cards</span><span class="strip-note">PROJECTS · QUESTIONS · EXPERIMENTS</span></div>
   <section id="collection" class="collection" aria-labelledby="collection-title">
-    <div class="collection-heading"><div><p class="eyebrow dark">THE 2026 COLLECTION</p><h2 id="collection-title">Pick a side quest.</h2></div><p>Finished files, early prototypes, and ideas along the way.<br>Every entry tells you what it actually is.</p></div>
+    <div class="collection-heading"><div><p class="eyebrow dark">THE 2026 COLLECTION</p><h2 id="collection-title">Pick a side quest.</h2></div><p>Finished files, early prototypes, and ideas along the way.<br>Look for “View the work” to open previews and demos.</p></div>
     <div class="month-nav" id="month-nav" role="group" aria-label="Filter by month"></div>
     <div class="control-panel">
       <label class="search-field"><span class="search-icon" aria-hidden="true"></span><span class="sr-only">Search collection</span><input id="search" type="search" placeholder="Search projects, topics, or ideas…" autocomplete="off"></label>
@@ -51,7 +52,7 @@
     <div id="empty-state" class="empty-state" hidden><span class="empty-number" aria-hidden="true">00</span><h3>No entries in this selection.</h3><p>Try another month, topic, or search.</p><button id="empty-reset" class="button dark-button" type="button">Show the full collection</button></div>
     <noscript><p class="noscript">Enable JavaScript to browse and filter the collection. This site does not use tracking or require an account.</p></noscript>
   </section>
-  <section class="about" id="about" aria-labelledby="about-title"><div><p class="eyebrow">BEHIND THE COLLECTION</p><h2 id="about-title">Curiosity is<br>the through line.</h2><p>Cooking, games, language learning, teaching, print design, and web experiments. This archive brings the small everyday questions and the bigger builds into one place.</p></div><div class="archive-notes"><h3>A few things worth knowing</h3><dl><div><dt>Project ≠ finished product</dt><dd>Some entries are public sites; others are saved files or private prototypes. Each card makes that distinction.</dd></div><div><dt>A collection, not a complete log</dt><dd>These are verified, shareable examples recovered for January through October 7, 2026. Missing entries do not mean nothing happened.</dd></div><div><dt>Summaries stay public-safe</dt><dd>Private conversations, client material, and personal records are not reproduced. Dates mark a recorded conversation, saved file, or project creation, in UTC.</dd></div></dl></div></section>
+  <section class="about" id="about" aria-labelledby="about-title"><div><p class="eyebrow">BEHIND THE COLLECTION</p><h2 id="about-title">Curiosity is<br>the through line.</h2><p>Cooking, games, language learning, teaching, print design, and web experiments. This archive brings the small everyday questions and the bigger builds into one place.</p></div><div class="archive-notes"><h3>A few things worth knowing</h3><dl><div><dt>Project ≠ finished product</dt><dd>Open “View the work” for original artwork, interactive previews, and available files. Entries without a shareable artifact are labeled “Read the story.”</dd></div><div><dt>A collection, not a complete log</dt><dd>These are verified, shareable examples recovered for January through October 7, 2026. Missing entries do not mean nothing happened.</dd></div><div><dt>Summaries stay public-safe</dt><dd>Private conversations, client material, and personal records are not reproduced. Dates mark a recorded conversation, saved file, or project creation, in UTC.</dd></div></dl></div></section>
 </main>
 <footer><a class="footer-brand" href="#top">NICKSOON <span>/ AI JOURNEY</span></a><p>An independent, fan-inspired collection. Not affiliated with Pokémon, Nintendo, Blizzard, Marvel, or their partners.</p><span>© 2026 Nick Soon</span></footer>
 <dialog id="entry-dialog" aria-labelledby="detail-title"><div class="dialog-inner"><button id="close-dialog" class="close-dialog" type="button" aria-label="Close project details">×</button><div id="dialog-content"></div></div></dialog>

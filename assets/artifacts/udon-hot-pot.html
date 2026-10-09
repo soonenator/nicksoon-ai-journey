@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Easy Udon Hot Pot</title>
+<style>
+  :root{
+    --bg:#fff8ef;
+    --card:#ffffff;
+    --ink:#2a241f;
+    --muted:#6f6259;
+    --accent:#d85b3f;
+    --accent2:#f1b85b;
+    --line:#eadfd3;
+    --ok:#e9f5e7;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:linear-gradient(180deg,#fff5e8,#fffaf5);
+    color:var(--ink);
+  }
+  .wrap{max-width:780px;margin:auto;padding:18px}
+  .hero{
+    background:linear-gradient(135deg,#d85b3f,#ef8a55);
+    color:white;padding:22px;border-radius:22px;
+    box-shadow:0 10px 30px rgba(100,60,30,.12)
+  }
+  h1{font-size:30px;line-height:1.05;margin:0 0 8px}
+  h2{font-size:20px;margin:0 0 12px}
+  p{line-height:1.5}
+  .sub{opacity:.92;margin:0}
+  .card{
+    background:var(--card); border:1px solid var(--line);
+    border-radius:18px; padding:18px; margin-top:14px;
+    box-shadow:0 4px 16px rgba(80,50,20,.05)
+  }
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:620px){.grid{grid-template-columns:1fr}}
+  label.choice{
+    display:block;border:1px solid var(--line);border-radius:14px;
+    padding:12px;cursor:pointer;background:#fff
+  }
+  label.choice:hover{border-color:#d9b59f}
+  select,button{
+    width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);
+    font-size:16px;background:white;color:var(--ink)
+  }
+  button{
+    background:var(--accent);color:white;border:none;font-weight:700;
+    cursor:pointer;margin-top:10px
+  }
+  button.secondary{background:#fff;color:var(--accent);border:1px solid #e8b7a8}
+  .step{
+    display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line)
+  }
+  .step:first-child{border-top:none}
+  .num{
+    flex:0 0 34px;height:34px;border-radius:50%;
+    display:grid;place-items:center;background:#f9e0d5;color:#a63e28;font-weight:800
+  }
+  .step.done{opacity:.55}
+  .step.done .num{background:#dff1dc;color:#276d2c}
+  .small{font-size:13px;color:var(--muted)}
+  .pill{display:inline-block;padding:4px 8px;border-radius:999px;background:#fff0db;color:#8b5313;font-size:12px;font-weight:700;margin:2px}
+  .broth{
+    background:#fff7e9;border:1px solid #f0d6a7;border-radius:14px;padding:14px
+  }
+  .checkrow{display:flex;align-items:flex-start;gap:9px}
+  input[type=checkbox]{transform:scale(1.25);margin-top:4px}
+  #customPlan{display:none}
+  .tip{background:#f7f4ff;border-left:4px solid #8f7be5;padding:12px;border-radius:10px;margin-top:10px}
+</style>
+</head>
+<body><aside style="font:13px/1.5 system-ui,sans-serif;background:#fff4cf;color:#3b3321;padding:12px 16px;border-bottom:1px solid #d6c584;position:relative;z-index:20"><strong>Archived artifact · September 3, 2026</strong><br>Original cooking widget, with a food-safety clarification added for this preview. Use a food thermometer; timing alone does not establish safe doneness. Beef and pork whole cuts: 145°F / 63°C, then rest 3 minutes. Chicken: 165°F / 74°C. <a href="https://ask.fsis.usda.gov/article/What-is-a-safe-internal-temperature-for-cooking-meat-and-poultry" target="_blank" rel="noopener noreferrer">USDA temperature guidance</a>.</aside>
+<div class="wrap">
+  <section class="hero">
+    <h1>🍲 Easy Udon Hot Pot</h1>
+    <p class="sub">One pot · pre-cut veggies · sliced meat · udon · about 20 minutes</p>
+  </section>
+
+  <section class="card">
+    <h2>1) Pick your meat</h2>
+    <select id="meat">
+      <option value="beef">Thin-sliced beef</option>
+      <option value="pork">Thin-sliced pork</option>
+      <option value="chicken">Thin-sliced chicken</option>
+      <option value="tofu">Tofu / no meat</option>
+    </select>
+
+    <h2 style="margin-top:18px">2) What veggies do you have?</h2>
+    <div class="grid">
+      <label class="choice"><input class="veg" type="checkbox" value="hard" checked> 🥕 Hard veggies — carrots, daikon, squash</label>
+      <label class="choice"><input class="veg" type="checkbox" value="mushroom" checked> 🍄 Mushrooms — shiitake, enoki, shimeji</label>
+      <label class="choice"><input class="veg" type="checkbox" value="soft" checked> 🥬 Soft veggies — bok choy, napa cabbage, spinach</label>
+      <label class="choice"><input class="veg" type="checkbox" value="onion"> 🧅 Onion / green onion</label>
+    </div>
+    <button onclick="buildPlan()">Build my cooking order</button>
+  </section>
+
+  <section class="card">
+    <h2>Broth — easy savory version</h2>
+    <div class="broth">
+      <div>• 4 cups water or chicken/dashi broth</div>
+      <div>• 3 tbsp soy sauce</div>
+      <div>• 2 tbsp mirin <span class="small">(or 1 tbsp sugar if you don't have mirin)</span></div>
+      <div>• 1 tsp minced garlic</div>
+      <div>• Optional: 1 tsp grated/frozen ginger</div>
+      <div>• Optional: 1 tsp sesame oil at the end</div>
+    </div>
+    <p class="small">Taste after it comes to a simmer. Add another splash of soy sauce if it tastes too weak.</p>
+  </section>
+
+  <section class="card" id="customPlan">
+    <h2>Your cooking order</h2>
+    <div id="steps"></div>
+    <button class="secondary" onclick="resetChecks()">Reset checkmarks</button>
+  </section>
+
+  <section class="card">
+    <h2>Default step-by-step</h2>
+    <div class="step"><div class="num">1</div><div><b>Make the broth.</b><br>Add broth ingredients to a medium/large pot and bring to a gentle boil.</div></div>
+    <div class="step"><div class="num">2</div><div><b>Add hard vegetables first.</b><br>Carrots, daikon, squash, thick cabbage stems: simmer <b>4–6 min</b>.</div></div>
+    <div class="step"><div class="num">3</div><div><b>Add mushrooms + onions.</b><br>Simmer about <b>2–3 min</b>.</div></div>
+    <div class="step"><div class="num">4</div><div><b>Add the meat.</b><br>Spread thin slices apart so they don't clump. Use a food thermometer; timing alone does not establish safe doneness. Beef and pork whole cuts: 145°F / 63°C, then rest 3 minutes. Chicken: 165°F / 74°C.</div></div>
+    <div class="step"><div class="num">5</div><div><b>Add udon.</b><br>Frozen or vacuum-packed udon usually needs only <b>1–3 min</b>. Separate gently with chopsticks/tongs.</div></div>
+    <div class="step"><div class="num">6</div><div><b>Add leafy vegetables last.</b><br>Bok choy, napa leaves, spinach: <b>1–2 min</b>, just until tender.</div></div>
+    <div class="step"><div class="num">7</div><div><b>Finish + eat.</b><br>Taste broth. Add soy sauce if needed. Finish with green onion and optional sesame oil.</div></div>
+    <div class="tip"><b>Hot-pot trick:</b> don't overcook everything at once. Once the noodles and leafy veggies are tender, lower the heat and eat right from the pot/bowls.</div>
+  </section>
+</div>
+
+<script>
+function buildPlan(){
+  const meat = document.getElementById('meat').value;
+  const vegs = [...document.querySelectorAll('.veg:checked')].map(x=>x.value);
+  let meatText = {
+    beef:"Add thin-sliced beef and swish/separate it in the broth for 1–3 minutes, Use a food thermometer; timing alone does not establish safe doneness. Beef and pork whole cuts: 145°F / 63°C, then rest 3 minutes. Chicken: 165°F / 74°C.",
+    pork:"Add thin-sliced pork and separate the slices. Cook until a thermometer confirms 145°F / 63°C, then rest 3 minutes. Timing varies with thickness.",
+    chicken:"Add thin-sliced chicken. Simmer 4–6 minutes, until fully cooked through (165°F / 74°C).",
+    tofu:"Add tofu now and warm it through for 2–3 minutes."
+  }[meat];
+
+  let arr = [];
+  arr.push("Combine broth ingredients and bring to a gentle boil.");
+  if(vegs.includes("hard")) arr.push("Add hard vegetables. Simmer 4–6 minutes.");
+  if(vegs.includes("mushroom")) arr.push("Add mushrooms. Simmer 2–3 minutes.");
+  if(vegs.includes("onion")) arr.push("Add onion or the white/light-green parts of green onion. Simmer 1–2 minutes.");
+  arr.push(meatText);
+  arr.push("Add udon noodles and cook 1–3 minutes, gently separating them.");
+  if(vegs.includes("soft")) arr.push("Add leafy/soft vegetables. Cook 1–2 minutes until just tender.");
+  arr.push("Taste the broth. Add a splash more soy sauce if needed. Finish with green onion tops and optional sesame oil.");
+
+  const steps = document.getElementById('steps');
+  steps.innerHTML = "";
+  arr.forEach((txt,i)=>{
+    const el=document.createElement('div');
+    el.className='step';
+    el.innerHTML = `<div class="num">${i+1}</div><div class="checkrow"><input type="checkbox" onchange="this.closest('.step').classList.toggle('done',this.checked)"><div>${txt}</div></div>`;
+    steps.appendChild(el);
+  });
+  document.getElementById('customPlan').style.display='block';
+  document.getElementById('customPlan').scrollIntoView({behavior:'smooth'});
+}
+function resetChecks(){
+  document.querySelectorAll('#customPlan input[type=checkbox]').forEach(c=>{c.checked=false;c.closest('.step').classList.remove('done')})
+}
+</script>
+</body>
+</html>
