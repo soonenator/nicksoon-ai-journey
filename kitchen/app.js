@@ -95,7 +95,7 @@
     $('ingredient-stats').innerHTML=ingredients.slice(0,6).map(([name,total])=>`<button class="stat-row" data-kitchen-ingredient="${esc(engine.normalize(name))}"><span>${esc(name)}</span><progress class="stat-bar" max="${ingredients[0][1]}" value="${total}" aria-label="${total} recipes"></progress><span class="stat-count">${total} recipes</span></button>`).join('');
     $('tool-stats').innerHTML=tools.slice(0,8).map(([name,total])=>`<button class="tool-stat" data-kitchen-tool="${esc(name)}">${esc(name==='Pressure cooker'?'Instant Pot':name)}<span>${total}</span></button>`).join('');
     $('tool-filter').innerHTML='<option value="">Any kitchen tool</option>'+tools.map(([name])=>`<option value="${esc(name)}">${esc(toolName(name))}</option>`).join('');
-    const common=['rice','chicken','pork','tofu','egg','spinach','zucchini','carrot','udon','beef','cabbage','mushrooms'];
+    const common=['rice','chicken','pork','tofu','egg','spinach','zucchini','carrot','udon','beef','cabbage','mushroom'];
     $('ingredient-chips').innerHTML=common.map(name=>`<button class="chip" data-ingredient="${name}" aria-pressed="false">${name}</button>`).join('');
     const profile=data.profile||{};
     const recurring=profile.recurringIngredients?.map(x=>esc(x.name)).join(', ');
