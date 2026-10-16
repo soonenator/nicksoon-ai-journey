@@ -8,35 +8,35 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none'">
   <title>Nick's Kitchen · Your next good meal</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261016-1">
-  <script defer src="recipes.js?v=20261016-1"></script>
-  <script defer src="images.js?v=20261016-1"></script>
-  <script defer src="recommend.js?v=20261016-1"></script>
-  <script defer src="app.js?v=20261016-1"></script>
+  <link rel="stylesheet" href="styles.css?v=20261016-2">
+  <script defer src="recipes.js?v=20261016-2"></script>
+  <script defer src="images.js?v=20261016-2"></script>
+  <script defer src="recommend.js?v=20261016-2"></script>
+  <script defer src="app.js?v=20261016-2"></script>
 </head>
 <body>
   <a class="skip-link" href="#recipe-box">Skip to recipes</a>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Nick's Kitchen home"><span class="brand-mark" aria-hidden="true">n<span>k</span></span><span>nick's kitchen<small>THE EVERYDAY RECIPE BOX</small></span></a>
     <nav aria-label="Main navigation"><a href="#recipe-box">Recipe box</a><a href="#my-kitchen">My kitchen</a></nav>
-    <span class="header-note"><span aria-hidden="true">✳</span> Good food. Less fuss.</span>
+    <span class="header-note"><span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1v18M2 5l16 10M2 15 18 5"/></svg></span> Good food. Less fuss.</span>
   </header>
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="tiny-flower" aria-hidden="true">✳</span> A LITTLE INSPIRATION FOR EVERYDAY DINNER</p>
+        <p class="eyebrow"><span class="tiny-flower" aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1v18M2 5l16 10M2 15 18 5"/></svg></span> A LITTLE INSPIRATION FOR EVERYDAY DINNER</p>
         <h1 id="hero-title">Your next<br><em>good meal.</em></h1>
         <p class="hero-description">The recipes worth keeping. The comfort food worth repeating. All in one easy place.</p>
-        <div class="hero-actions"><button class="button primary" id="hero-pick">Pick my dinner <span aria-hidden="true">↗</span></button><a class="text-link" href="#recipe-box">Browse the recipe box <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-actions"><button class="button primary" id="hero-pick">Pick my dinner <span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16 16 4M5 4h11v11"/></svg></span></button><a class="text-link" href="#recipe-box">Browse the recipe box <span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14m-5-5 5 5 5-5"/></svg></span></a></div>
         <p class="hero-footnote">Rice bowls. Saucy things. Dinner without the overthinking.</p>
       </div>
       <div class="hero-art"><div id="hero-image"><div class="recipe-media"><div class="photo-placeholder"><strong>Good food. Less fuss.</strong><span>Your everyday recipe box</span></div></div></div><span class="hero-image-label">Your next dinner starts here</span></div>
     </section>
     <div class="collection-strip" aria-label="Collection overview"><span><strong id="total-recipes">0</strong> recipes to come back to</span><span><strong id="total-sources">0</strong> original videos linked</span><span class="strip-local"><span aria-hidden="true">◌</span> Your likes stay on this device</span></div>
     <section class="recipe-section section-wrap" id="recipe-box" aria-labelledby="recipe-title">
-      <div class="section-heading"><div><p class="eyebrow">THE RECIPE BOX</p><h2 id="recipe-title">What sounds good?</h2></div><button class="button light" id="pick-button"><span aria-hidden="true">✳</span> Help me choose</button></div>
+      <div class="section-heading"><div><p class="eyebrow">THE RECIPE BOX</p><h2 id="recipe-title">What sounds good?</h2></div><button class="button light" id="pick-button"><span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1v18M2 5l16 10M2 15 18 5"/></svg></span> Help me choose</button></div>
       <section class="meal-context" aria-label="Suggestions for your current meal">
-        <label for="current-meal"><span class="context-icon" aria-hidden="true">↗</span><span>Already have a dish in mind?<small>Find a side, or something similar for next time.</small></span></label>
+        <label for="current-meal"><span class="context-icon" aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16 16 4M5 4h11v11"/></svg></span><span>Already have a dish in mind?<small>Find a side, or something similar for next time.</small></span></label>
         <select id="current-meal"><option value="">Choose your current dish</option></select>
         <select id="match-mode" aria-label="Suggestion type"><option value="similar">Something similar</option><option value="pairing">Pair it with a side</option></select>
       </section>
@@ -51,13 +51,13 @@
               <label class="field-label" for="tool-filter">Cooking with</label><select id="tool-filter"><option value="">Any kitchen tool</option></select><p class="field-hint">Shows recipes using this tool. Other tools may still be needed.</p>
               <fieldset class="ingredient-field"><legend class="field-label">An ingredient to start with</legend><div id="ingredient-chips" class="chips"></div><p class="field-hint">Matches at least one selected ingredient.</p></fieldset>
               <label class="check-field"><input id="easy-filter" type="checkbox"> Keep it low-effort</label>
-              <div class="filter-note"><span aria-hidden="true">✳</span><p>A recipe box that gets to know your tastes.<br>Tap a heart to shape your next suggestion.</p></div>
+              <div class="filter-note"><span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1v18M2 5l16 10M2 15 18 5"/></svg></span><p>A recipe box that gets to know your tastes.<br>Tap a heart to shape your next suggestion.</p></div>
             </div>
           </details>
         </aside>
         <div class="recipe-results">
           <div class="results-toolbar"><div class="view-tabs" role="group" aria-label="Recipe collection"><button class="view-tab active" data-view="all" aria-pressed="true">All recipes <span id="all-count"></span></button><button class="view-tab" data-view="liked" aria-pressed="false">Liked <span id="liked-count"></span></button><button class="view-tab" data-view="queue" aria-pressed="false">Try next <span id="queue-count"></span></button><button class="view-tab" data-view="cooked" aria-pressed="false">Cooked <span id="cooked-count"></span></button></div><label class="sort-control"><span class="sr-only">Sort recipes</span><select id="sort"><option value="recommended">For you</option><option value="quickest">Quickest first</option><option value="title">A–Z</option></select></label></div>
-          <div class="result-caption"><p id="result-count" role="status" aria-live="polite"></p><button class="plain-button" id="how-it-works">How suggestions work <span aria-hidden="true">↗</span></button></div>
+          <div class="result-caption"><p id="result-count" role="status" aria-live="polite"></p><button class="plain-button" id="how-it-works">How suggestions work <span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 16 16 4M5 4h11v11"/></svg></span></button></div>
           <div id="recipe-grid" class="recipe-grid"></div>
           <div id="empty-state" class="empty-state" hidden><span aria-hidden="true">♡</span><h3 id="empty-title">Nothing in this little corner yet.</h3><p id="empty-description"></p><button class="button primary" id="empty-reset">See all recipes</button></div>
         </div>
@@ -65,9 +65,9 @@
     </section>
     <section id="my-kitchen" class="kitchen-section section-wrap" aria-labelledby="kitchen-title">
       <div class="section-heading"><div><p class="eyebrow">THE EVERYDAY ESSENTIALS</p><h2 id="kitchen-title">A peek inside your kitchen.</h2></div><span class="section-aside">Familiar ingredients. A few good tools.</span></div>
-      <div class="kitchen-grid"><article class="kitchen-panel"><p class="panel-number">01 / THE INGREDIENTS</p><h3>What keeps showing up</h3><p>Most common ingredient tags in this recipe box. Tap one to find a place to start.</p><div id="ingredient-stats" class="stats-list"></div></article><article class="kitchen-panel tools-panel"><p class="panel-number">02 / THE TOOLS</p><h3>Put your kitchen to work</h3><p>Tools tagged in your saved recipes. Counts describe the collection, not how often you cook.</p><div id="tool-stats" class="tool-stats"></div></article><article class="kitchen-panel personal-panel"><p class="panel-number">03 / YOUR OWN ROTATION</p><h3>Keep the good ones close</h3><div class="personal-stats"><span><strong id="personal-liked">0</strong> liked</span><span><strong id="personal-queued">0</strong> to try</span><span><strong id="personal-cooked">0</strong> cooked</span></div><p>Hearts, your try-next list, and cooked marks are saved in this browser. They aren’t shared or synced.</p><button class="text-link" id="export-preferences">Download my marks <span aria-hidden="true">↓</span></button><p class="small-note" id="storage-note">A small backup for your personal recipe box.</p></article></div>
+      <div class="kitchen-grid"><article class="kitchen-panel"><p class="panel-number">01 / THE INGREDIENTS</p><h3>What keeps showing up</h3><p>Most common ingredient tags in this recipe box. Tap one to find a place to start.</p><div id="ingredient-stats" class="stats-list"></div></article><article class="kitchen-panel tools-panel"><p class="panel-number">02 / THE TOOLS</p><h3>Put your kitchen to work</h3><p>Tools tagged in your saved recipes. Counts describe the collection, not how often you cook.</p><div id="tool-stats" class="tool-stats"></div></article><article class="kitchen-panel personal-panel"><p class="panel-number">03 / YOUR OWN ROTATION</p><h3>Keep the good ones close</h3><div class="personal-stats"><span><strong id="personal-liked">0</strong> liked</span><span><strong id="personal-queued">0</strong> to try</span><span><strong id="personal-cooked">0</strong> cooked</span></div><p>Hearts, your try-next list, and cooked marks are saved in this browser. They aren’t shared or synced.</p><button class="text-link" id="export-preferences">Download my marks <span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v14m-5-5 5 5 5-5"/></svg></span></button><p class="small-note" id="storage-note">A small backup for your personal recipe box.</p></article></div>
     </section>
-    <section class="closing-note"><span aria-hidden="true">✳</span><p>A little less “what’s for dinner?”<br><em>A little more “that was good.”</em></p></section>
+    <section class="closing-note"><span aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1v18M2 5l16 10M2 15 18 5"/></svg></span><p>A little less “what’s for dinner?”<br><em>A little more “that was good.”</em></p></section>
   </main>
   <footer><a class="footer-brand" href="#top">nick's kitchen</a><p>Images and recipes belong to their creators. Follow the source for full instructions.</p><button class="plain-button" id="about-data">About this recipe box</button></footer>
   <dialog id="recipe-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="Close recipe" id="close-recipe">×</button><div id="recipe-detail"></div></dialog>
