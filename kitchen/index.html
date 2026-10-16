@@ -3,15 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f3e9">
+  <meta name="theme-color" content="#ffd43b">
   <meta name="description" content="A little less deciding. A lot more good food. A personal recipe box with simple, on-device dinner suggestions.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none'">
   <title>Nick's Kitchen · Your next good meal</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261014-3">
-  <script defer src="recipes.js?v=20261014-3"></script>
-  <script defer src="recommend.js?v=20261014-3"></script>
-  <script defer src="app.js?v=20261014-3"></script>
+  <link rel="stylesheet" href="styles.css?v=20261016-1">
+  <script defer src="recipes.js?v=20261016-1"></script>
+  <script defer src="images.js?v=20261016-1"></script>
+  <script defer src="recommend.js?v=20261016-1"></script>
+  <script defer src="app.js?v=20261016-1"></script>
 </head>
 <body>
   <a class="skip-link" href="#recipe-box">Skip to recipes</a>
@@ -29,7 +30,7 @@
         <div class="hero-actions"><button class="button primary" id="hero-pick">Pick my dinner <span aria-hidden="true">↗</span></button><a class="text-link" href="#recipe-box">Browse the recipe box <span aria-hidden="true">↓</span></a></div>
         <p class="hero-footnote">Rice bowls. Saucy things. Dinner without the overthinking.</p>
       </div>
-      <div class="hero-art" aria-hidden="true"><span class="art-label">MADE FOR REAL-LIFE APPETITES</span><img src="assets/dinner.svg" alt="" width="530" height="440"><span class="handwritten">a good bowl fixes a lot.</span><span class="art-star">✳</span></div>
+      <div class="hero-art"><div id="hero-image"><div class="recipe-media"><div class="photo-placeholder"><strong>Good food. Less fuss.</strong><span>Your everyday recipe box</span></div></div></div><span class="hero-image-label">Your next dinner starts here</span></div>
     </section>
     <div class="collection-strip" aria-label="Collection overview"><span><strong id="total-recipes">0</strong> recipes to come back to</span><span><strong id="total-sources">0</strong> original videos linked</span><span class="strip-local"><span aria-hidden="true">◌</span> Your likes stay on this device</span></div>
     <section class="recipe-section section-wrap" id="recipe-box" aria-labelledby="recipe-title">
@@ -68,7 +69,7 @@
     </section>
     <section class="closing-note"><span aria-hidden="true">✳</span><p>A little less “what’s for dinner?”<br><em>A little more “that was good.”</em></p></section>
   </main>
-  <footer><a class="footer-brand" href="#top">nick's kitchen</a><p>Original recipes belong to their creators. Follow the source for full instructions.</p><button class="plain-button" id="about-data">About this recipe box</button></footer>
+  <footer><a class="footer-brand" href="#top">nick's kitchen</a><p>Images and recipes belong to their creators. Follow the source for full instructions.</p><button class="plain-button" id="about-data">About this recipe box</button></footer>
   <dialog id="recipe-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="Close recipe" id="close-recipe">×</button><div id="recipe-detail"></div></dialog>
   <dialog id="info-dialog" aria-labelledby="info-title"><button class="dialog-close" aria-label="Close information" id="close-info">×</button><div class="info-content"><p class="eyebrow">A SMALL, THOUGHTFUL RECIPE BOX</p><h2 id="info-title">Simple suggestions.<br>All on your device.</h2><div id="info-body"></div></div></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
