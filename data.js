@@ -1,7 +1,7 @@
 window.ARCADE_DATA = {
   "title": "NickSoon AI Journey",
   "owner": "Nick Soon",
-  "updated": "2026-10-07",
+  "updated": "2026-10-27",
   "months": [
     {
       "id": "2026-01",
@@ -904,6 +904,60 @@ window.ARCADE_DATA = {
       "linkLabel": null,
       "dateLabel": "Current kit saved",
       "number": "049"
+    },
+    {
+      "id": "nicks-kitchen",
+      "date": "2026-10-14",
+      "title": "Nick’s Kitchen",
+      "description": "A mobile-first recipe box with ingredient and tool filters, saved inspiration, and a dinner picker.",
+      "format": "Recipe box",
+      "themes": [
+        "Everyday",
+        "Making things"
+      ],
+      "type": "Project",
+      "status": "Public recipe app",
+      "detail": "A static recipe collection with original source links, deterministic dinner suggestions, and browser-local likes, try-next choices, and cooked marks. This showcase links to the existing public app; private recipe records and conversations are not reproduced.",
+      "publicUrl": "https://soonenator.github.io/nicksoon-ai-journey/kitchen/",
+      "linkLabel": "Open Nick’s Kitchen",
+      "dateLabel": "First public repository commit",
+      "number": "050"
+    },
+    {
+      "id": "brunch-shortlist",
+      "date": "2026-10-21",
+      "title": "Brunch Menu Shortlist",
+      "description": "A phone-friendly comparison of five restaurants, with browsable brunch and lunch food options and official menu links.",
+      "format": "Menu comparison",
+      "themes": [
+        "Everyday",
+        "Making things"
+      ],
+      "type": "Project",
+      "status": "Public menu guide",
+      "detail": "An October 2026 menu-comparison snapshot designed to make choosing food easier, without displaying prices. Restaurant menus can change; use the official links in the guide for current information.",
+      "publicUrl": "https://soonenator.github.io/nicksoon-ai-journey/brunch/",
+      "linkLabel": "Open the menu guide",
+      "dateLabel": "First public repository commit",
+      "number": "051"
+    },
+    {
+      "id": "jedi-survival",
+      "date": "2026-10-24",
+      "title": "Jedi Survival",
+      "description": "An unofficial Star Wars-inspired browser survival game with three stages, automatic powers, and desktop and touch controls.",
+      "format": "Browser game",
+      "themes": [
+        "Learning & play",
+        "Making things"
+      ],
+      "type": "Project",
+      "status": "Public playable prototype",
+      "detail": "A standalone fan-made survival prototype with lightsaber combat, upgrade choices, stage commanders, and keyboard or touch controls. It runs as static HTML, CSS, and JavaScript without an account, backend, or AI API. Not affiliated with Star Wars or its owners.",
+      "publicUrl": "https://soonenator.github.io/nicksoon-ai-journey/jedi-survival/",
+      "linkLabel": "Play Jedi Survival",
+      "dateLabel": "First public repository commit",
+      "number": "052"
     }
   ]
 };

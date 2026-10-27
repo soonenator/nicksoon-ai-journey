@@ -42,9 +42,17 @@ These explicit links leave the archive only when chosen:
 
 The first two are separate ChatGPT-hosted demos. Their hosting and any usage are outside the archive. The 3D demo requires WebGL 2, which some restricted browsers cannot provide. Links inside historical demos go to their original sources; historical product, game, shopping, and park information should not be treated as current advice.
 
+## Latest public projects
+
+- [Nick’s Kitchen](https://soonenator.github.io/nicksoon-ai-journey/kitchen/) — recipe box, filtering, and dinner suggestions.
+- [Brunch Menu Shortlist](https://soonenator.github.io/nicksoon-ai-journey/brunch/) — five-restaurant menu comparison.
+- [Jedi Survival](https://soonenator.github.io/nicksoon-ai-journey/jedi-survival/) — unofficial, fan-made browser survival prototype.
+
+These projects already live in this public repository. Their collection dates come from their first repository commits; the cards link to the existing apps rather than copying private source material.
+
 ## Content and checks
 
-All 49 entries and 18 project cards are preserved. The collection covers January through October 7, 2026. Private transcripts, personal records, and private prototype links are excluded. Product overview images do not grant access to unreleased production files.
+The original 49 entries and 18 project cards are preserved, with three later public projects added for 52 entries and 21 project cards. The collection was reviewed through October 27, 2026. Private transcripts, personal records, and private prototype links are excluded. Product overview images do not grant access to unreleased production files.
 
 Run dependency-free logic and static checks:
 
