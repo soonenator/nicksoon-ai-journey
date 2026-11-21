@@ -25,7 +25,7 @@ The site is published from `main` at the repository root. The included `.nojekyl
 - Screenshots of private apps show their visual design without exposing their private runtime or personal saved data.
 - **Read the story** means the original artifact has not been added or that the entry is a conversation/draft. It never implies an available demo.
 
-Archive labels identify dates and limited adaptations. The Animal Adventure copy removes the incorrect Arctic penguin; the cooking widget adds a food-thermometer safety note; the park map receives a standalone host-style wrapper. Original work is not replaced with invented mockups.
+Archive labels identify dates and limited adaptations. The Animal Adventure copy removes the incorrect Arctic penguin; the cooking widget adds a food-thermometer safety note; the park map receives a standalone host-style wrapper; the Pokémon MSRP Finder adds a date notice and link safeguards. Original work is not replaced with invented mockups.
 
 ## What runs where
 

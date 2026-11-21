@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>San Mateo Pokémon Cards — MSRP Finder</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --text:#171923; --muted:#697386;
+    --border:#e6e8ef; --accent:#4f46e5; --good:#087f5b; --warn:#b45309;
+    --shadow:0 8px 24px rgba(22,29,37,.08);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:18px 14px 40px}
+  .hero{
+    background:linear-gradient(135deg,#1f2937,#4338ca);
+    color:#fff;border-radius:22px;padding:20px 18px;box-shadow:var(--shadow);
+  }
+  h1{font-size:26px;line-height:1.05;margin:0 0 8px}
+  .sub{font-size:14px;opacity:.9;line-height:1.4}
+  .pillrow{display:flex;gap:8px;overflow:auto;padding:14px 0 6px;scrollbar-width:none}
+  .pillrow::-webkit-scrollbar{display:none}
+  button{
+    border:1px solid var(--border);background:#fff;color:var(--text);
+    border-radius:999px;padding:10px 13px;font-size:14px;font-weight:700;
+    white-space:nowrap;
+  }
+  button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .section-title{font-size:17px;font-weight:800;margin:18px 2px 10px}
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:18px;
+    padding:15px;margin:10px 0;box-shadow:0 4px 12px rgba(22,29,37,.04);
+  }
+  .top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .name{font-size:18px;font-weight:800}
+  .tag{font-size:12px;font-weight:800;padding:6px 9px;border-radius:999px}
+  .best{background:#dff7ed;color:var(--good)}
+  .okay{background:#fff1d6;color:var(--warn)}
+  .desc{font-size:14px;color:var(--muted);line-height:1.45;margin-top:6px}
+  .actions{display:flex;gap:8px;margin-top:12px}
+  .actions a{
+    flex:1;text-decoration:none;text-align:center;padding:11px;border-radius:12px;
+    font-size:14px;font-weight:800;border:1px solid var(--border);color:var(--text);background:#fff;
+  }
+  .actions a.primary{background:#111827;color:#fff;border-color:#111827}
+  .pricegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .price{background:#fff;border:1px solid var(--border);border-radius:15px;padding:13px}
+  .price strong{display:block;font-size:18px}
+  .price span{font-size:12px;color:var(--muted)}
+  .tip{
+    border-left:4px solid var(--accent);background:#eef2ff;border-radius:12px;padding:12px 13px;
+    font-size:14px;line-height:1.45;
+  }
+  .footer{font-size:12px;color:var(--muted);line-height:1.45;margin-top:18px}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>Pokémon Cards at MSRP<br>around San Mateo</h1>
+    <div class="sub">Best places to check first when you want sealed product without card-shop markup.</div>
+  </div>
+
+  <p class="tip"><strong>Archived artifact · August 2026.</strong> Store suggestions and price benchmarks are historical. This demo does not check current inventory or prices.</p>
+
+  <div class="pillrow" id="filters">
+    <button class="active" data-filter="all">All</button>
+    <button data-filter="best">Best bets</button>
+    <button data-filter="retail">Retail</button>
+    <button data-filter="local">Local shops</button>
+  </div>
+
+  <div class="section-title">Where I’d check first</div>
+
+  <div class="card store" data-type="best retail">
+    <div class="top">
+      <div>
+        <div class="name">Target</div>
+        <div class="desc">Usually one of the better MSRP options for current Pokémon TCG packs, tins, collections and ETBs.</div>
+      </div>
+      <div class="tag best">TOP PICK</div>
+    </div>
+    <div class="actions">
+      <a class="primary" href="https://www.google.com/maps/search/Target+San+Mateo+CA" target="_blank" rel="noopener noreferrer">Maps</a>
+      <a href="https://www.target.com/s?searchTerm=pokemon+cards" target="_blank" rel="noopener noreferrer">Check Target</a>
+    </div>
+  </div>
+
+  <div class="card store" data-type="best retail">
+    <div class="top">
+      <div>
+        <div class="name">Best Buy</div>
+        <div class="desc">Good for sleeved boosters, 3-packs and occasional special products at normal retail pricing.</div>
+      </div>
+      <div class="tag best">MSRP</div>
+    </div>
+    <div class="actions">
+      <a class="primary" href="https://www.google.com/maps/search/Best+Buy+near+San+Mateo+CA" target="_blank" rel="noopener noreferrer">Maps</a>
+      <a href="https://www.bestbuy.com/site/searchpage.jsp?st=pokemon+cards" target="_blank" rel="noopener noreferrer">Check Best Buy</a>
+    </div>
+  </div>
+
+  <div class="card store" data-type="best retail">
+    <div class="top">
+      <div>
+        <div class="name">GameStop — Hillsdale</div>
+        <div class="desc">Worth checking for new releases, ETBs and collections. Retail pricing is generally much better than resale-heavy stores.</div>
+      </div>
+      <div class="tag best">GOOD BET</div>
+    </div>
+    <div class="actions">
+      <a class="primary" href="https://www.google.com/maps/search/GameStop+Hillsdale+San+Mateo" target="_blank" rel="noopener noreferrer">Maps</a>
+      <a href="https://www.gamestop.com/search/?q=pokemon+tcg" target="_blank" rel="noopener noreferrer">Check GameStop</a>
+    </div>
+  </div>
+
+  <div class="card store" data-type="retail">
+    <div class="top">
+      <div>
+        <div class="name">Barnes & Noble</div>
+        <div class="desc">Often overlooked. Can have Pokémon TCG stock at retail prices when Target and GameStop are cleaned out.</div>
+      </div>
+      <div class="tag okay">SLEEPER</div>
+    </div>
+    <div class="actions">
+      <a class="primary" href="https://www.google.com/maps/search/Barnes+%26+Noble+near+San+Mateo+CA" target="_blank" rel="noopener noreferrer">Maps</a>
+      <a href="https://www.barnesandnoble.com/s/pokemon+cards" target="_blank" rel="noopener noreferrer">Check B&N</a>
+    </div>
+  </div>
+
+  <div class="card store" data-type="retail">
+    <div class="top">
+      <div>
+        <div class="name">Costco</div>
+        <div class="desc">Not consistent, but when Pokémon bundles appear they can be excellent value—sometimes better than MSRP per pack.</div>
+      </div>
+      <div class="tag okay">VALUE</div>
+    </div>
+    <div class="actions">
+      <a class="primary" href="https://www.google.com/maps/search/Costco+near+San+Mateo+CA" target="_blank" rel="noopener noreferrer">Maps</a>
+      <a href="https://www.costco.com/CatalogSearch?dept=All&keyword=pokemon" target="_blank" rel="noopener noreferrer">Check Costco</a>
+    </div>
+  </div>
+
+  <div class="card store" data-type="local">
+    <div class="top">
+      <div>
+        <div class="name">What's On Second</div>
+        <div class="desc">Great local Pokémon stop, especially for singles—but sealed hot products may follow market pricing instead of MSRP.</div>
+      </div>
+      <div class="tag okay">COMPARE</div>
+    </div>
+    <div class="actions">
+      <a class="primary" href="https://www.google.com/maps/search/What's+On+Second+San+Mateo" target="_blank" rel="noopener noreferrer">Maps</a>
+    </div>
+  </div>
+
+  <div class="card store" data-type="local">
+    <div class="top">
+      <div>
+        <div class="name">Gator Games</div>
+        <div class="desc">Local game shop worth checking, but for sealed Pokémon I’d compare the sticker price against MSRP first.</div>
+      </div>
+      <div class="tag okay">COMPARE</div>
+    </div>
+    <div class="actions">
+      <a class="primary" href="https://www.google.com/maps/search/Gator+Games+San+Mateo" target="_blank" rel="noopener noreferrer">Maps</a>
+    </div>
+  </div>
+
+  <div class="section-title">Quick MSRP cheat sheet</div>
+  <div class="pricegrid">
+    <div class="price"><strong>~$4.49</strong><span>Sleeved booster</span></div>
+    <div class="price"><strong>~$13.99</strong><span>3-pack blister</span></div>
+    <div class="price"><strong>~$26.94</strong><span>6-pack booster bundle</span></div>
+    <div class="price"><strong>~$49.99</strong><span>Standard ETB</span></div>
+    <div class="price"><strong>~$161.64</strong><span>36-pack booster box</span></div>
+    <div class="price"><strong>Varies</strong><span>Special collections</span></div>
+  </div>
+
+  <div class="section-title">My route</div>
+  <div class="tip">
+    <b>If I were hunting today:</b> Target → Best Buy → GameStop → Barnes & Noble.  
+    Only after that would I check local card shops for sealed product—unless you’re shopping for singles.
+  </div>
+
+  <div class="footer">
+    Prices above are useful benchmarks for recent standard products; special sets and premium collections can have different MSRP.
+    Availability changes quickly, so tap the retailer links before driving over.
+  </div>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('#filters button');
+  const stores = document.querySelectorAll('.store');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+
+      stores.forEach(s => {
+        s.classList.toggle('hidden', f !== 'all' && !s.dataset.type.includes(f));
+      });
+    });
+  });
+</script>
+</body>
+</html>

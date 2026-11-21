@@ -13,7 +13,7 @@ check('Empty state, reset, and search input',()=>{$('search').listeners.input({t
 check('Timeline groups all ten months chronologically',()=>{$('timeline-view').listeners.click();assert.equal(($('results').innerHTML.match(/class="timeline-section"/g)||[]).length,10);assert.equal(A.selectEntries()[0].date,'2026-01-12');assert.equal($('timeline-view').attributes['aria-pressed'],'true')});
 check('Month controls support End, Home and arrow navigation',()=>{monthButtons[1].focus();$('month-nav').listeners.keydown({key:'End',preventDefault(){}});assert.equal(A.state.month,'2026-10');assert.equal(document.activeElement.dataset.month,'2026-10');$('month-nav').listeners.keydown({key:'Home',preventDefault(){}});assert.equal(A.state.month,'all');$('month-nav').listeners.keydown({key:'ArrowRight',preventDefault(){}});assert.equal(A.state.month,'2026-01')});
 check('Detail dialog uses real entry, public links, and restores focus',()=>{const prior=document.activeElement;A.openEntry('ai-adoption');assert.equal($('entry-dialog').open,true);assert.match($('dialog-content').innerHTML,/https:\/\/state-of-ai-adoption\.sylar0706\.chatgpt\.site/);assert.equal(location.hash,'#entry-ai-adoption');A.closeEntry();assert.equal($('entry-dialog').open,false);assert.equal(document.activeElement,prior)});
-check('Private prototypes have no private URL and invalid IDs do nothing',()=>{A.openEntry('digital-dojo');assert(!$('dialog-content').innerHTML.includes('digital-dojo.sylar'));assert.match($('dialog-content').innerHTML,/source app remains private/);A.closeEntry();A.openEntry('msrp-finder');assert.match($('dialog-content').innerHTML,/Original artifact not yet available/);A.closeEntry();A.openEntry('unknown');assert.equal($('entry-dialog').open,false)});
+check('Private prototypes have no private URL and invalid IDs do nothing',()=>{A.openEntry('digital-dojo');assert(!$('dialog-content').innerHTML.includes('digital-dojo.sylar'));assert.match($('dialog-content').innerHTML,/source app remains private/);A.closeEntry();A.openEntry('unknown');assert.equal($('entry-dialog').open,false)});
 check('Public link allowlist has precisely six verified destinations',()=>{assert.equal(JSON.stringify(entries.filter(e=>e.publicUrl).map(e=>e.publicUrl).sort()),JSON.stringify(['https://soonenator.github.io/nicksoon-ai-journey/kitchen/','https://soonenator.github.io/nicksoon-ai-journey/brunch/','https://soonenator.github.io/nicksoon-ai-journey/jedi-survival/','https://github.com/soonenator/Pkmncenter','https://starter-partner-quiz.sylar0706.chatgpt.site','https://state-of-ai-adoption.sylar0706.chatgpt.site'].sort()))});
 check('No private identifiers, transcript links, credentials, or inventory content deployed',()=>{const source=['index.html','app.js','data.js','artifacts.js','styles.css'].map(f=>fs.readFileSync(path.join(root,f),'utf8')).join('\n');for(const pattern of [/libfile_/i,/appgprj_/i,/chatgpt\.com\/c\//i,/nicholasjsoon@/i,/dream_notes/i,/action_items/i,/agent_notes/i,/Bearer\s+[A-Za-z0-9]/,/api[_-]?key\s*[:=]/i])assert(!pattern.test(source),String(pattern));assert(!source.includes('portfolio-inventory'));});
 check('HTML local assets resolve; responsive/reduced-motion and accessibility hooks exist',()=>{const html=fs.readFileSync(path.join(root,'index.html'),'utf8');for(const match of html.matchAll(/(?:href|src)="([^"#]+)"/g)){if(!/^https?:/.test(match[1]))assert(fs.existsSync(path.join(root,match[1])),match[1])}assert(html.includes('aria-live="polite"'));assert(html.includes('aria-labelledby="detail-title"'));assert(html.includes('name="viewport"'));const css=fs.readFileSync(path.join(root,'styles.css'),'utf8');assert(css.includes('prefers-reduced-motion'));assert(css.includes('@media(max-width:620px)'));assert(css.includes(':focus-visible'));assert(!css.includes('@import'))});
@@ -42,6 +42,17 @@ check('All archived HTML is standalone, dated, private-data-free, and syntactica
     for(const code of content.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi))new vm.Script(code[1],{filename:file});
     for(const forbidden of [/libfile_/i,/chatgpt\.com\/c\//i,/nicholasjsoon@/i,/localStorage/,/fetch\s*\(/,/XMLHttpRequest/,/WebSocket/])assert(!forbidden.test(content),file+' '+forbidden);
   }
+});
+check('MSRP Finder opens the dated archive on its existing tile',()=>{
+  assert.equal(entries.filter(e=>e.id==='msrp-finder').length,1);
+  A.openEntry('msrp-finder');
+  const dialog=$('dialog-content').innerHTML;
+  assert.match(dialog,/<iframe [^>]*src="assets\/artifacts\/msrp-finder\.html"[^>]*sandbox="allow-scripts"/);
+  assert.match(dialog,/August 2026/);
+  assert.match(dialog,/not a live tracker/);
+  assert.match(dialog,/Open full screen/);
+  A.closeEntry();
+  assert.equal($('dialog-content').innerHTML,'');
 });
 check('Closing a dialog removes its artifact media',()=>{A.openEntry('animal-adventure');assert.match($('dialog-content').innerHTML,/<iframe/);A.closeEntry();assert.equal($('dialog-content').innerHTML,'');});
 

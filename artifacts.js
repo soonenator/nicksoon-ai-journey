@@ -106,6 +106,15 @@ window.ARCADE_ARTIFACTS = {
       "label": "INTERACTIVE ARCHIVE"
     }
   ],
+  "msrp-finder": [
+    {
+      "kind": "html",
+      "title": "Pokémon MSRP Finder",
+      "src": "assets/artifacts/msrp-finder.html",
+      "caption": "Original filterable HTML prototype · August 2026. An archive notice and link safeguards were added. Store and price information is historical; this is not a live tracker.",
+      "label": "INTERACTIVE ARCHIVE"
+    }
+  ],
   "skills-guide": [
     {
       "kind": "html",

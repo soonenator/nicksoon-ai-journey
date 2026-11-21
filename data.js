@@ -755,8 +755,8 @@ window.ARCADE_DATA = {
         "Making things"
       ],
       "type": "Project",
-      "status": "Saved prototype",
-      "detail": "A saved HTML guide. It is a research-interface prototype, not a live stock or price tracker. Location details and shopping records are not included here.",
+      "status": "Viewable archive",
+      "detail": "Explore the August 2026 HTML prototype for comparing Pokémon card retailers and price benchmarks. Store suggestions are historical; this demo does not check current inventory or prices.",
       "publicUrl": null,
       "linkLabel": null,
       "dateLabel": "File saved",
