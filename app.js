@@ -38,11 +38,11 @@
     $('clear-filters').hidden = !filtered;
     $('empty-state').hidden = !!entries.length;
     $('results').className = state.view==='grid'?'card-grid':'timeline-results';
-    $('sort-caption').textContent = state.view==='grid'?'NEWEST FIRST':'JANUARY TO OCTOBER';
+    $('sort-caption').textContent = state.view==='grid'?'NEWEST FIRST':'OLDEST FIRST';
     $('grid-view').setAttribute('aria-pressed',String(state.view==='grid'));
     $('timeline-view').setAttribute('aria-pressed',String(state.view==='timeline'));
     if(state.view==='grid') $('results').innerHTML=entries.map(card).join('');
-    else $('results').innerHTML=data.months.map(m=>{const group=entries.filter(e=>e.date.startsWith(m.id));return group.length?`<section class="timeline-section" aria-labelledby="month-${m.id}"><header class="timeline-label"><h3 id="month-${m.id}">${esc(m.label)}</h3><p>${group.length} ${group.length===1?'ENTRY':'ENTRIES'} / 2026</p></header><div class="timeline-cards">${group.map(card).join('')}</div></section>`:'';}).join('');
+    else $('results').innerHTML=data.months.map(m=>{const group=entries.filter(e=>e.date.startsWith(m.id));return group.length?`<section class="timeline-section" aria-labelledby="month-${m.id}"><header class="timeline-label"><h3 id="month-${m.id}">${esc(m.label)}</h3><p>${group.length} ${group.length===1?'ENTRY':'ENTRIES'} / ${esc(m.id.slice(0,4))}</p></header><div class="timeline-cards">${group.map(card).join('')}</div></section>`:'';}).join('');
     document.querySelectorAll('[data-month]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.month===state.month)));
   }
   function resetFilters(){state.month='all';state.topic='all';state.type='all';state.query='';$('search').value='';$('topic').value='all';$('type').value='all';render();}
@@ -119,6 +119,8 @@
   $('entry-dialog').addEventListener('click',event=>{if(event.target===$('entry-dialog')){const r=$('entry-dialog').getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closeEntry();}});
   $('entry-dialog').addEventListener('close',()=>{if(location.hash.startsWith('#entry-'))history.replaceState(null,'',lastNonEntryHash);activeEntry=null;$('dialog-content').innerHTML='';if(returnFocus&&document.contains(returnFocus))returnFocus.focus();});
   $('total-count').textContent=data.entries.length;
+  $('month-count').textContent=data.months.length;
+  $('collection-updated').textContent='COLLECTION UPDATED THROUGH '+longDate(data.updated).toUpperCase();
   $('project-count').textContent=data.entries.filter(e=>e.type==='Project').length;
   renderMonths();render();
   syncEntryHash();

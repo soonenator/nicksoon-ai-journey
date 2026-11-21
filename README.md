@@ -74,3 +74,42 @@ These cover collection integrity, filters, dialog markup, public-link allowlists
 Artifact records use `kind` (`image`, `html`, `pdf`, or `link`), `title`, `src`, and `caption`. Images need meaningful `alt` text. Use a bundled `preview` image for documents and external sites; local HTML can render directly without one. Set `download: true` only for public files intended for downloading. Never add private account, conversation, or local-computer URLs.
 
 An independent, fan-inspired collection. Not affiliated with Pokémon, Nintendo, Blizzard, Marvel, or their partners.
+
+## Public-project discovery (proposed automation)
+
+GitHub Actions checks daily at 16:23 UTC (08:23 Pacific standard time / 09:23 daylight time), or from **Actions → Discover public projects → Run workflow**. It reads only public metadata from GitHub's unauthenticated user-repositories endpoint, with pagination. It selects repositories owned by `soonenator` that have the explicit **`ai-journey` topic**. Forks, archived/disabled repositories, private repositories, the untagged portfolio itself, and ignored numeric repository IDs are excluded. Add this topic only after reviewing a repository for public portfolio inclusion and confirming AI assistance. Keep the portfolio repository untagged.
+
+Supported discovery is **public GitHub repositories**, including the source of a GitHub Pages app. The generated card links to GitHub source; it does not infer a deployment from a homepage field or copy README text, release assets, screenshots, or code. Generic descriptions avoid importing potentially sensitive metadata. You can curate descriptions and add a verified demo or preview through the existing `data.js` / `artifacts.js` process during review.
+
+**ChatGPT-only creations are not discoverable by this workflow.** It has no access to ChatGPT chats, Library, private projects, unpublished files, or a feed of ChatGPT-hosted sites. Publish reviewed work into an opted-in public GitHub repository to make it discoverable, or manually curate an already-public site and its summary. New apps inside this repository (such as another subdirectory), gists, arbitrary websites, and private-source deployments require manual curation. Nick’s Kitchen, Brunch Menu Shortlist, and Jedi Survival are already included and are not added again.
+
+### Review and deduplication
+
+A discovery run proposes appended cards in `data.js` on a dedicated branch and opens a pull request. It never writes to `main`, merges, approves, or changes existing artifacts. Existing numeric GitHub IDs, normalized source URLs (including artifacts), and normalized legacy titles prevent duplicates. Repository IDs remain stable across renames. Differently named copies of one project still need human duplicate review; matching names are conservatively skipped. Dates are **discovery dates**, not unverified creation/publication dates. The data structures and card design remain the same; month counts, timeline year labels, and collection update captions adapt as the collection grows.
+
+An existing PR for the same batch is left untouched, including reviewer edits. To reject a repository permanently, add its numeric GitHub repository ID to `ignoredRepositoryIds` in `scripts/discover-public-projects.cjs`, merge that configuration change, then close the proposal. Closing alone suppresses the identical batch; it does not permanently ignore individual repositories in later batches. A failed PR creation can be retried: the workflow reuses its existing branch without force-pushing. Review any recovered branch's changes and CI results before merging. Remove stale automation branches manually when no longer needed.
+
+### Enable after applying and reviewing this patch
+
+1. Allow Actions in repository settings and enable **Settings → Actions → General → Workflow permissions → Allow GitHub Actions to create and approve pull requests**. The workflow requests only repository contents and pull-request write permissions; it never invokes approval. Organization policy may restrict this setting. No personal token is needed.
+2. Add `ai-journey` only to reviewed public project repositories. To make a first safe trial, use a disposable public test repository with no sensitive content and this topic.
+3. Run the workflow manually. Inspect the PR's data diff and both validation commands; confirm the test project appears once and the existing three apps remain unchanged. Run again to confirm no second PR for the same batch. Close/reject the test using the ignore procedure above.
+4. Merge only after reviewing the public suitability, AI attribution, descriptions, dates, and duplicates. The daily schedule becomes active when this workflow is on the default branch. Scheduled Actions can be delayed or disabled for inactivity; use manual dispatch when needed.
+
+### Local testing
+
+Node 22 is sufficient; there are no npm dependencies:
+
+```sh
+node tests/check.cjs
+node --test tests/discovery.cjs
+node scripts/discover-public-projects.cjs         # network discovery, dry run
+node scripts/discover-public-projects.cjs --write # updates local data.js only
+node tests/check.cjs
+```
+
+Discovery tests cover opt-in/privacy exclusions, stable IDs and repeat runs, existing project aliases, source URLs, pagination, API failures, and preservation of existing entries. `tests/check.cjs` retains the original 52-entry baseline and exact legacy public-link allowlist, while validating added source cards separately and exercising the expanded collection. The workflow runs both suites before and after generation and before pushing. A separate read-only PR workflow runs both as well. GitHub-token-created PRs may need manual workflow approval or dispatch depending on GitHub's event policy; the discovery job's before/after checks do not depend on a second workflow firing. These checks do not replace browser/accessibility review.
+
+To disable discovery, disable **Discover public projects** in Actions. Existing cards remain unchanged. To roll back an accepted addition, revert its PR; ignore its numeric repository ID to prevent rediscovery.
+
+GitHub references: [workflow permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository), [GITHUB_TOKEN event behavior](https://docs.github.com/en/actions/concepts/security/github_token), [scheduled events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule), and [public repository API](https://docs.github.com/en/rest/repos/repos#list-repositories-for-a-user).
